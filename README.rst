@@ -435,8 +435,173 @@ Example running F5 XC Cloud mesh pod on OCP
 
 2.5 Create ver-dns service
 
+This is to ensure that ver-dns service has a static ClusterIP. During software updates, ver-0, ver-1 and ver-2 will be restarted and ver pods IP may change. 
+
+::
+
+  fbchan@forest:~/ocp-au$ oc -n ves-system get pod -o wide -l app=ver
+  NAME    READY   STATUS    RESTARTS        AGE   IP             NODE                      NOMINATED NODE     READINESS GATES
+  ver-0   16/16   Running   15 (162m ago)   12h   10.130.1.132   ocp-au1.ocp.edgecnf.com   <none>           <none>
+  ver-1   16/16   Running   19 (101m ago)   12h   10.128.0.44    ocp-au2.ocp.edgecnf.com   <none>           <none>
+  ver-2   16/16   Running   7 (5m23s ago)   12h   10.129.0.144   ocp-au3.ocp.edgecnf.com   <none>           <none>
+
+
+dns-ver-svc.yaml
+
+::
+
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: ver-dns
+    namespace: ves-system
+    labels:
+      app: ver
+  spec:
+    ports:
+      - name: "ver-dns-udp"
+        protocol: UDP
+        port: 53
+        targetPort: 53
+      - name: "ver-dns-tcp"
+        protocol: TCP
+        port: 53
+        targetPort: 53
+    selector:
+      app: ver
+
+kubectl apply -f dns-ver-svc.yaml
+
+
+
 2.6 Update OCP DNS Operator to delegate domain to ver-dns
 
+DNS default configmap before update with DNS Operator
+
+::
+
+  fbchan@forest:~/ocp-au$ oc -n openshift-dns get cm dns-default -o yaml
+  apiVersion: v1
+  data:
+    Corefile: |
+      .:5353 {
+          bufsize 512
+          errors
+          health {
+              lameduck 20s
+          }
+          ready
+          kubernetes cluster.local in-addr.arpa ip6.arpa {
+              pods insecure
+              fallthrough in-addr.arpa ip6.arpa
+          }
+          prometheus 127.0.0.1:9153
+          forward . /etc/resolv.conf {
+              policy sequential
+          }
+          cache 900 {
+              denial 9984 30
+          }
+          reload
+      }
+  kind: ConfigMap
+  metadata:
+    creationTimestamp: "2022-11-01T00:22:52Z"
+    labels:
+      dns.operator.openshift.io/owning-dns: default
+    name: dns-default
+    namespace: openshift-dns
+    ownerReferences:
+    - apiVersion: operator.openshift.io/v1
+      controller: true
+      kind: DNS
+      name: default
+      uid: 1c629cc8-f060-4e99-a8d1-dd5c2be42ccd
+    resourceVersion: "2184645"
+    uid: d3866bc7-31f5-453f-b9d7-6315d85af400
+
+
+Upates DNS operator to delegate xcmesh.global to Cloud Mesh pod
+
+dns-operator-ocp-au.yaml
+
+::
+
+  apiVersion: operator.openshift.io/v1
+  kind: DNS
+  metadata:
+    name: default
+  spec:
+    servers:
+    - name: xcmesh-global-dns
+      zones:
+        - xcmesh.global
+      forwardPlugin:
+        upstreams:
+          - 172.30.5.75
+
+oc apply -f dns-operator-ocp-au.yaml
+
+::
+
+  fbchan@forest:~/ocp-au$ oc apply -f dns-operator-ocp-au.yaml
+  Warning: resource dnses/default is missing the kubectl.kubernetes.io/last-applied-configuration annotation which   is required by oc apply. oc apply should only be used on resources created declaratively by either oc create   --save-config or oc apply. The missing annotation will be patched automatically.
+  dns.operator.openshift.io/default configured
+
+After DNS operator updated
+
+::
+
+  apiVersion: v1
+  data:
+    Corefile: |
+      # xcmesh-global-dns
+      xcmesh.global:5353 {
+          forward . 172.30.5.75
+          errors
+          bufsize 512
+      }
+      .:5353 {
+          bufsize 512
+          errors
+          health {
+              lameduck 20s
+          }
+          ready
+          kubernetes cluster.local in-addr.arpa ip6.arpa {
+              pods insecure
+              fallthrough in-addr.arpa ip6.arpa
+          }
+          prometheus 127.0.0.1:9153
+          forward . /etc/resolv.conf {
+              policy sequential
+          }
+          cache 900 {
+              denial 9984 30
+          }
+          reload
+      }
+  kind: ConfigMap
+  metadata:
+    creationTimestamp: "2022-11-01T00:22:52Z"
+    labels:
+      dns.operator.openshift.io/owning-dns: default
+    name: dns-default
+    namespace: openshift-dns
+    ownerReferences:
+    - apiVersion: operator.openshift.io/v1
+      controller: true
+      kind: DNS
+      name: default
+      uid: 1c629cc8-f060-4e99-a8d1-dd5c2be42ccd
+    resourceVersion: "8590070"
+    uid: d3866bc7-31f5-453f-b9d7-6315d85af400 
+
+.. figure:: ./images/ocp-dns-delegated.png
+
+Repeat registration for ocp-sg and ocp-hk
+
+.. figure:: ./images/ocp-sites.png
 
 Step 3 - Deploy Cloud Mesh Node
 ####################################
