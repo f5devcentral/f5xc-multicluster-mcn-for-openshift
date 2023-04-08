@@ -178,7 +178,91 @@ Do not continue until you have hugepages configured. Example above shown that I 
 
 1.3 Ensure StorageClass configured and Persistent Volume (PVC) working.
 
-This article written based upon 3 x independent OCP cluster (ocp-au, ocp-hk, ocp-sg) that distributed across different location.
+Deployment of CE site on K8S require persistent volume (PV). If you don’t have pv configured, here an example to deploy a NFS provisioner for OCP.
+
+Assuming you already have an NFS server running (e.g. Linux NFS) on a remote server. In my example, 10.176.10.122 is my nfs server, /home/nfs is my nfs path
+
+::
+
+  helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+
+  helm repo update
+  
+  oc create namespace openshift-nfs-storage
+  
+  oc label namespace openshift-nfs-storage "openshift.io/cluster-monitoring=true"
+  
+  helm install nfs nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+  --set nfs.server=10.176.10.122 \
+  --set nfs.path=/home/nfs \
+  --set storageClass.name=managed-nfs \
+  --set storageClass.defaultClass=true \
+  --set storageClass.onDelete=delete \
+  -n openshift-nfs-storage --create-namespace
+  
+  oc patch storageclass managed-nfs -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/  is-default-class":"true"}}}'
+
+Validate to make sure nfs pod is running
+
+::
+
+  fbchan@forest:~/ocp-au$ oc -n openshift-nfs-storage get pod
+  NAME                                      READY   STATUS    RESTARTS   AGE
+  nfs-client-provisioner-7cdf6c5f86-dkhkf   1/1     Running   26         152d
+  
+  fbchan@forest:~/ocp-au$ oc get sc
+  NAME                    PROVISIONER                                   RECLAIMPOLICY   VOLUMEBINDINGMODE     ALLOWVOLUMEEXPANSION   AGE
+  managed-nfs (default)   k8s-sigs.io/nfs-subdir-external-provisioner   Delete          Immediate             false                  152d
+
+  
+Use the sample statefulset manifest below to test to ensure PV and PVC working.
+
+::
+
+  apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    name: busybox
+  spec:
+    serviceName: busybox
+    replicas: 1
+    selector:
+      matchLabels:
+        app: busybox
+    template:
+      metadata:
+        labels:
+          app: busybox
+      spec:
+        containers:
+          - image: busybox
+            args: [/bin/sh, -c, 'sleep 9999' ]
+            volumeMounts:
+              - mountPath: /test
+                name: busybox-pvc
+            name: busybox
+    volumeClaimTemplates:
+    - metadata:
+        name: busybox-pvc
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+
+Example output
+
+::
+
+  fbchan@forest:~/ocp-au$ oc apply -f busybox-pvc.yaml
+  statefulset.apps/busybox created
+  
+  fbchan@forest:~/ocp-au$ oc get pvc
+  NAME                    STATUS   VOLUME                                     CAPACITY   ACCESS MODES     STORAGECLASS   AGE
+  busybox-pvc-busybox-0   Bound    pvc-08882259-4ca5-45ee-a426-a2ff69946dfa   1Gi        RWO              managed-nfs    49s
+  
+  fbchan@forest:~/ocp-au$ oc delete -f busybox-pvc.yaml
+  statefulset.apps "busybox" deleted
 
 
 Step 2 - Deploy Cloud Mesh Pod
