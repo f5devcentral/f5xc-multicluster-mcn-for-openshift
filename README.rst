@@ -614,9 +614,21 @@ Step 3 - Deploy Cloud Mesh Node
 
 3.2 Setup service discovery of Mesh Node to OCP
 
+.. figure:: ./images/ocp-sd01.png
+
+.. figure:: ./images/ocp-sd02.png
+
+.. figure:: ./images/ocp-sd03.png
+
+
 3.3 Create service account for Mesh node service discovery.
 
 3.4 Setup pod network routing for ovn-kubernetes.
+
+.. figure:: ./images/ocp-sd04.png
+
+.. figure:: ./images/ocp-sd05.png
+
 
 Step 4 - Deploy application on OpenShift
 ###############################################
