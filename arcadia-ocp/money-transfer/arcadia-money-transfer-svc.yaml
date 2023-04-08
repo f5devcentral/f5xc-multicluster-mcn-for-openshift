@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: money-transfer
+  annotations:
+    ves.io/proxy-type: HTTP_PROXY
+    ves.io/app_type: arcadia-ocp
+    ves.io/sites: ves-io-system/hk2-hkg
+  labels:
+    app: money-transfer
+    service: money-transfer
+spec:
+  ports:
+  - name: money-transfer-80
+    port: 80
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    app: money-transfer

@@ -1,0 +1,2120 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fe-to-money-backend-referfriends-postman.json
+  annotations:
+    ves.io/sites: ves-io-system/me1-mel
+data:
+  fe-to-money-backend-referfriends-postman.json: |
+    {
+    "info": {
+    "_postman_id": "f5922548-c3a6-46e5-b581-d0c14fbe0e24",
+    "name": "Arcadia-Money-Backend-ReferFriends",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "142705"
+    },
+    "item": [
+    {
+    "name": "01-all-customer Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/customer/all",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "customer",
+    "all"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-customer-membership Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/customer/membership",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "customer",
+    "membership"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-credit-rating Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/customer/creditRating",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "customer",
+    "creditRating"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-transfer Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/transfer/getTransferTokenById",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "transfer",
+    "getTransferTokenById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-transfer-account Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/transfer/byAccount",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "transfer",
+    "byAccount"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-post-transfer Copy",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/account/transfer",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "account",
+    "transfer"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-post-deposit Copy",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/account/deposit",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "account",
+    "deposit"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getaccount-by Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/account/raghu/withdraw/usd",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "account",
+    "raghu",
+    "withdraw",
+    "usd"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getaccount-tony Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/account/tony/withdraw/pound",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "account",
+    "tony",
+    "withdraw",
+    "pound"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getaccount-olivia Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/account/olivia/withdraw/usd",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "account",
+    "olivia",
+    "withdraw",
+    "usd"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getaccount-paula Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/account/paula/withdraw/sgd",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "account",
+    "paula",
+    "withdraw",
+    "sgd"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-oidc-token Copy",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/auth/refer-friends/oidc-token",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "auth",
+    "refer-friends",
+    "oidc-token"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-withdraw-raghu Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL2}}/api/v1/account/raghu/withdraw/usd",
+    "protocol": "http",
+    "host": [
+    "{{URL2}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "account",
+    "raghu",
+    "withdraw",
+    "usd"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getTradingbyToken Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getTradingTokenById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getTradingTokenById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getStock Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/getStock",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "getStock"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-placeOrder Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/placeOrder",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "placeOrder"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-moveOrder Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/moveOrder",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "moveOrder"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-moveOrder Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/moveOrder",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "moveOrder"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-changeOrderStopLimit Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/changeOrderStopLimit",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "changeOrderStopLimit"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-1 Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-2 Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-3 Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-4 Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-5 Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-6 Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-addRefFriendsById Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/addRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "addRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-auth/refer-friends/oidc-token Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/auth/refer-friends/oidc-token",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "auth",
+    "refer-friends",
+    "oidc-token"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-auth/refer-friends/oidc-token Copy 2",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/auth/money-transfer/2fa-token",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "auth",
+    "money-transfer",
+    "2fa-token"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-auth/money-transfer/2fa-token Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v1/auth/money-transfer/2fa-token",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "auth",
+    "money-transfer",
+    "2fa-token"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-orderAddresses-1 Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/orderAddresses",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "orderAddresses"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-orderAddresses-2 Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/orderAddresses",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "orderAddresses"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-orderAddresses-3 Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/orderAddresses",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "orderAddresses"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-orderAddresses-4 Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/orderAddresses",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "orderAddresses"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-orderAddresses-5 Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/orderAddresses",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "orderAddresses"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-updatePaymentInfoById Copy 2",
+    "request": {
+    "method": "PUT",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/updatePaymentInfoById/6267272",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "updatePaymentInfoById",
+    "6267272"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-updatePaymentInfoById-5252627 Copy 2",
+    "request": {
+    "method": "PUT",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/updatePaymentInfoById/5252627",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "updatePaymentInfoById",
+    "5252627"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-updatePaymentInfoById-7236373 Copy 2",
+    "request": {
+    "method": "PUT",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/updatePaymentInfoById/7236373",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "updatePaymentInfoById",
+    "7236373"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-changeOrderById Copy 2",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL1}}/api/v2/changeOrderById",
+    "protocol": "http",
+    "host": [
+    "{{URL1}}"
+    ],
+    "path": [
+    "api",
+    "v2",
+    "changeOrderById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-subscribe Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/subscribe",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "subscribe"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-unsubscribe Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/unsubscribe",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "unsubscribe"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFeesbyid Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text"
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFeesbyid",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFeesbyid"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-referfriendsById-7872132 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Auth",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/referfriendsById/7872132",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "referfriendsById",
+    "7872132"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-referfriendsById-99827262 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/referfriendsById/99827262",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "referfriendsById",
+    "99827262"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-referfriendsById-6253826 Copy",
+    "protocolProfileBehavior": {
+    "disabledSystemHeaders": {}
+    },
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token sksjs837377lkAjaalalaiuw",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/referfriendsById/6253826",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "referfriendsById",
+    "6253826"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-referfriendsById-PANW Copy",
+    "request": {
+    "method": "PUT",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 40,\n  \"name\": \"tsla\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/referfriendsById/PANW",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "referfriendsById",
+    "PANW"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-referfriendsById-INTC Copy",
+    "request": {
+    "method": "DELETE",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": ""
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/referfriendsById/INTC",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "referfriendsById",
+    "INTC"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-1 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-2 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-3 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-4 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-5 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById-6 Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById Copy",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-addRefFriendsById Copy",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/addRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "addRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-auth/refer-friends/oidc-token Copy",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/auth/refer-friends/oidc-token",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "auth",
+    "refer-friends",
+    "oidc-token"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-getRefFriendsById Copy",
+    "request": {
+    "method": "GET",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "getRefFriendsById"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-updateemailById Copy",
+    "request": {
+    "method": "PUT",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/updateemailById/6267272",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "updateemailById",
+    "6267272"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-updateemailById-5252627 Copy",
+    "request": {
+    "method": "PUT",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/updateemailById/5252627",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "updateemailById",
+    "5252627"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-updateemailById-7236373 Copy",
+    "request": {
+    "method": "PUT",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text"
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/updateemailById/7236373",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "updateemailById",
+    "7236373"
+    ]
+    }
+    },
+    "response": []
+    },
+    {
+    "name": "01-changeemailById Copy",
+    "request": {
+    "method": "POST",
+    "header": [
+    {
+    "key": "Content-Type",
+    "value": "application/json",
+    "type": "text"
+    },
+    {
+    "key": "Authorization",
+    "value": "Token abcdef",
+    "type": "text",
+    "disabled": true
+    }
+    ],
+    "body": {
+    "mode": "raw",
+    "raw": "{\n  \"stock_id\": 4,\n  \"name\": \"FFIV\",\n  \"qty\":100\n}"
+    },
+    "url": {
+    "raw": "http://{{URL3}}/api/v1/changeemailById",
+    "protocol": "http",
+    "host": [
+    "{{URL3}}"
+    ],
+    "path": [
+    "api",
+    "v1",
+    "changeemailById"
+    ]
+    }
+    },
+    "response": []
+    }
+    ],
+    "event": [
+    {
+    "listen": "prerequest",
+    "script": {
+    "type": "text/javascript",
+    "exec": [
+    ""
+    ]
+    }
+    },
+    {
+    "listen": "test",
+    "script": {
+    "type": "text/javascript",
+    "exec": [
+    ""
+    ]
+    }
+    }
+    ],
+    "variable": [
+    {
+    "key": "URL1",
+    "value": "apigw-be.xcmesh.global",
+    "type": "string"
+    },
+    {
+    "key": "URL2",
+    "value": "apigw-mt.xcmesh.global",
+    "type": "string"
+    },
+    {
+    "key": "URL3",
+    "value": "apigw-rf.xcmesh.global",
+    "type": "string"
+    }
+    ]
+    }

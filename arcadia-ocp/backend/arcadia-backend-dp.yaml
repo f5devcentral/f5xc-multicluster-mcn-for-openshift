@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  annotations:
+    ves.io/sites: ves-io-system/sg3-sin
+  labels:
+    app: backend
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: backend
+        version: v1
+    spec:
+      containers:
+        - image: reg.edgecnf.com/fintech/arcadia-backend:v2.0-ocp
+          imagePullPolicy: IfNotPresent
+          name: backend
+          env:
+            - name: service_name
+              value: backend
+          name: backend
+          ports:
+            - containerPort: 9080
+              protocol: TCP
+        - name: nginx-sc
+          image: reg.edgecnf.com/apps/nginx-unpriv:v1.1
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 9090
+          volumeMounts:
+          - name: default-conf
+            mountPath: /etc/nginx/conf.d/default.conf
+            subPath: default.conf
+        - name: apigw-backend
+          image: reg.edgecnf.com/apps/arcadia-apigw:v2.0
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 4010
+          volumeMounts:
+          - name: api-gw
+            mountPath: /usr/src/prism/api-gw.json
+            subPath: api-gw.json
+      volumes:
+        - name: default-conf
+          configMap:
+             name: sc-nginx-default-conf-9090-be-cm
+        - name: api-gw
+          configMap:
+             name: api-gw-be.json

@@ -1,0 +1,12 @@
+apiVersion: operator.openshift.io/v1
+kind: DNS
+metadata:
+  name: default
+spec:
+  servers:
+  - name: xcmesh-global-dns
+    zones:
+      - xcmesh.global
+    forwardPlugin:
+      upstreams:
+        - 172.30.109.190

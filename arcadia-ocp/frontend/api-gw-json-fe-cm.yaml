@@ -1,0 +1,1866 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gw-fe.json
+  annotations:
+    ves.io/sites: ves-io-system/me1-mel
+data:
+  api-gw.json: |
+    {
+      "openapi": "3.0.0",
+      "info": {
+        "version": "1.0.2",
+        "title": "Arcadia Financial Trading API",
+        "description": "Arcadia Financial Trading Platform",
+        "contact": {}
+      },
+      "paths": {
+        "/api/auth/oidc": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AuthResponse"
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "examples": {
+                      "response": {
+                        "value": [
+                          {
+                            "message": "string",
+                            "code": 0,
+                            "trace": "string",
+                            "token": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Authentication requests",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "name": "Authorization",
+                "required": true
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/subscribe": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AuthResponse"
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "examples": {
+                      "response": {
+                        "value": [
+                          {
+                            "message": "string",
+                            "code": 0,
+                            "trace": "string",
+                            "token": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Authentication requests",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/unsubscribe": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AuthResponse"
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "examples": {
+                      "response": {
+                        "value": [
+                          {
+                            "message": "string",
+                            "code": 0,
+                            "trace": "string",
+                            "token": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Authentication requests",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "name": "Authorization",
+                "required": true
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/getTradingTokenById": {
+          "get": {
+            "security": [],
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GenericResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get lists of products by category",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/getStock": {
+          "get": {
+            "security": [],
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GenericResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get lists of products by category",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "categoryID",
+                "required": false,
+                "in": "query",
+                "description": "Category ID",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "name": "Authorization"
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/getStockById/{stock_id}": {
+          "get": {
+            "security": [],
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ProductResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get a product from it's ID",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "in": "path",
+                "name": "stock_id",
+                "description": "ID of product that needs to be fetched",
+                "required": true,
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              {
+                "name": "categoryID",
+                "required": false,
+                "in": "query",
+                "description": "Category ID",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f"
+              }
+            ]
+          },
+          "parameters": [
+            {
+              "schema": {
+                "type": "string"
+              },
+              "name": "stock_id",
+              "in": "path",
+              "required": true
+            }
+          ]
+        },
+        "/api/placeOrder": {
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Cart"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Adds an item to the cart",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "name": "uid",
+                "required": false,
+                "in": "query",
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "name": "Authorization",
+                "required": true
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Cart"
+                  }
+                }
+              },
+              "required": true,
+              "x-examples": {
+                "example-1": {
+                  "customer_id": 0,
+                  "created_at": "string",
+                  "updated_at": "string",
+                  "name": "string",
+                  "stock_id": 0,
+                  "id": "string",
+                  "price": "string",
+                  "qty": 0
+                }
+              }
+            },
+            "x-internal": false
+          },
+          "parameters": []
+        },
+        "/api/moveOrder": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/GenericResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get lists of products by category",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true
+              }
+            ]
+          },
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CustomerAddress"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Adds a new customer address",
+            "x-volterra-api-group": "create",
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CustomerAddress"
+                  }
+                }
+              },
+              "required": true
+            },
+            "parameters": []
+          },
+          "parameters": []
+        },
+        "/api/placeOrderById/my": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CartResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get lists of products by category",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "uid",
+                "required": false,
+                "in": "query",
+                "description": "Session based web application scanning with tweaks.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "name": "Authorization",
+                "required": true
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/changeOrderStopLimit": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CartResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get lists of products by category",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "uid",
+                "required": false,
+                "in": "query",
+                "description": "Session based web application scanning with tweaks.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/cancelOrderById/{customer_id}": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/CartResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get Cart by ID",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              },
+              {
+                "name": "customer_id",
+                "required": true,
+                "in": "path",
+                "description": "cart id that is being updated",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "put": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/CartResponse"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Update Cart by ID",
+            "x-volterra-api-group": "update",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              },
+              {
+                "name": "customer_id",
+                "required": true,
+                "in": "path",
+                "description": "cart id that is being updated",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/CartResponse"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "delete": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON"
+              }
+            },
+            "description": "Get lists of products by category",
+            "x-volterra-api-group": "delete",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              },
+              {
+                "name": "customer_id",
+                "required": true,
+                "in": "path",
+                "description": "cart id that is being updated",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "parameters": [
+            {
+              "schema": {
+                "type": "string"
+              },
+              "name": "customer_id",
+              "in": "path",
+              "required": true
+            }
+          ]
+        },
+        "/api/getAllOrder": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Gets all orders.",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            ]
+          },
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Order"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Creates an order",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "parameters": []
+        },
+        "/api/getRefFriendsById": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Gets all orders.",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "name": "Authorization"
+              }
+            ]
+          },
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Order"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Creates an order",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "parameters": []
+        },
+        "/api/addRefFriendsById": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Gets all orders.",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f"
+              }
+            ]
+          },
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Order"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Creates an order",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "parameters": []
+        },
+        "/api/auth/refer-friends/oidc-token": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Gets all orders.",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true,
+                "name": "Authorization"
+              }
+            ]
+          },
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Order"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Creates an order",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "parameters": []
+        },
+        "/api/auth/money-transfer/2fa-token": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Gets all orders.",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true
+              }
+            ]
+          },
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Order"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Creates an order",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "name": "Authorization",
+                "required": true,
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "schema": {
+                  "type": "string",
+                  "pattern": "Token \\w+"
+                }
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "parameters": []
+        },
+        "/api/getAllOrderById/{customer_id}": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Order"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Gets an order by ID.",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "name": "page",
+                "required": false,
+                "in": "query",
+                "description": "Current page of results. Default is 1",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "per_page",
+                "required": false,
+                "in": "query",
+                "description": "Number to show per page of results",
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "name": "customer_id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": false,
+                "name": "Authorization"
+              }
+            ]
+          },
+          "parameters": [
+            {
+              "schema": {
+                "type": "string"
+              },
+              "name": "customer_id",
+              "in": "path",
+              "required": true
+            }
+          ]
+        },
+        "/api/orderAddresses": {
+          "post": {
+            "responses": {
+              "403": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/OrderAddress"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Creates an order",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderAddress"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "parameters": []
+        },
+        "/api/addStockToOrders": {
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/OrderItem"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Adds an item to an order",
+            "x-volterra-api-group": "create",
+            "parameters": [
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true,
+                "name": "Authorization"
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/OrderItem"
+                  }
+                }
+              },
+              "required": true
+            }
+          },
+          "parameters": []
+        },
+        "/api/getPaymentInfo/me": {
+          "get": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/UserProfileData"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Get current users profile data",
+            "x-volterra-api-group": "read",
+            "parameters": [
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f"
+              }
+            ]
+          },
+          "parameters": []
+        },
+        "/api/updatePaymentInfoById/{user_id}": {
+          "put": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/UserProfileData"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "update a users data.",
+            "x-volterra-api-group": "update",
+            "parameters": [
+              {
+                "name": "user_id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "integer"
+                }
+              },
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "description": "In the form of: Token kjs879sad78f9sd87f",
+                "required": true,
+                "name": "Authorization"
+              }
+            ],
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/UserProfileData"
+                  }
+                }
+              }
+            }
+          },
+          "parameters": [
+            {
+              "schema": {
+                "type": "string"
+              },
+              "name": "user_id",
+              "in": "path",
+              "required": true
+            }
+          ]
+        },
+        "/api/changeOrderById": {
+          "post": {
+            "responses": {
+              "200": {
+                "description": "Response will be in JSON",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ContactMessage"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Send a contact message.",
+            "x-volterra-api-group": "create",
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ContactMessage"
+                  }
+                }
+              }
+            },
+            "parameters": [
+              {
+                "schema": {
+                  "type": "string"
+                },
+                "in": "header",
+                "name": "Authorization",
+                "description": "In the form of: Token kjs879sad78f9sd87f"
+              }
+            ]
+          },
+          "parameters": []
+        }
+      },
+      "servers": [
+        {
+          "url": "https://arcadia.xc.edgecnf.com"
+        }
+      ],
+      "components": {
+        "schemas": {
+          "AuthResponse": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Status message"
+              },
+              "code": {
+                "type": "integer",
+                "description": "HTTP response code"
+              },
+              "trace": {
+                "type": "string",
+                "description": "To be defined"
+              },
+              "token": {
+                "type": "string",
+                "description": "Session token to be used by all other requests"
+              }
+            }
+          },
+          "Cart": {
+            "type": "object",
+            "properties": {
+              "customer_id": {
+                "type": "integer"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "stock_id": {
+                "type": "integer"
+              },
+              "id": {
+                "type": "string"
+              },
+              "price": {
+                "type": "string"
+              },
+              "qty": {
+                "type": "integer"
+              }
+            }
+          },
+          "CartResponse": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              },
+              "items_count": {
+                "type": "integer"
+              },
+              "items_qty": {
+                "type": "integer"
+              },
+              "total_price": {
+                "type": "integer"
+              },
+              "uid": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "string"
+              },
+              "customer_email": {
+                "type": "string"
+              },
+              "customer_is_guest": {
+                "type": "string"
+              },
+              "payment_method": {
+                "type": "string"
+              },
+              "shipping_method": {
+                "type": "string"
+              },
+              "shipping_address_id": {
+                "type": "string"
+              },
+              "billing_address_id": {
+                "type": "string"
+              },
+              "last_step": {
+                "type": "string"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/CartItemResponse"
+                }
+              }
+            }
+          },
+          "CartItemResponse": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "string"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              },
+              "stock_id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "qty": {
+                "type": "string"
+              },
+              "price": {
+                "type": "string"
+              }
+            }
+          },
+          "ContactMessage": {
+            "type": "object",
+            "properties": {
+              "created_at": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "CustomerAddress": {
+            "type": "object",
+            "properties": {
+              "address_line_1": {
+                "type": "string"
+              },
+              "address_line_2": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "country_id": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "integer"
+              },
+              "full_name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "region": {
+                "type": "string"
+              },
+              "zip": {
+                "type": "string"
+              }
+            }
+          },
+          "GenericResponse": {
+            "type": "object",
+            "properties": {}
+          },
+          "Order": {
+            "type": "object",
+            "properties": {
+              "comment": {
+                "type": "string"
+              },
+              "coupon_id": {
+                "type": "string"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "customer_email": {
+                "type": "string"
+              },
+              "customer_firstname": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "string"
+              },
+              "customer_lastname": {
+                "type": "string"
+              },
+              "discount": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              },
+              "increment_id": {
+                "type": "string"
+              },
+              "orderAddress": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/OrderAddress"
+                }
+              },
+              "orderItems": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/GenericResponse"
+                }
+              },
+              "payment_method": {
+                "type": "string"
+              },
+              "shipping_method": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "total_price": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              }
+            }
+          },
+          "OrderAddress": {
+            "type": "object",
+            "properties": {
+              "address_line_1": {
+                "type": "string"
+              },
+              "address_line_2": {
+                "type": "string"
+              },
+              "address_type": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "country_id": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "integer"
+              },
+              "full_name": {
+                "type": "string"
+              },
+              "zip": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "integer"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "region": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              }
+            }
+          },
+          "OrderItem": {
+            "type": "object",
+            "properties": {
+              "cart_id": {
+                "type": "integer"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "customer_id": {
+                "type": "integer"
+              },
+              "stock_id": {
+                "type": "integer"
+              },
+              "price": {
+                "type": "string"
+              },
+              "qty": {
+                "type": "integer"
+              },
+              "id": {
+                "type": "integer"
+              }
+            }
+          },
+          "ProductResponse": {
+            "type": "object",
+            "properties": {
+              "productID": {
+                "type": "integer"
+              },
+              "categoryID": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "customers_rating": {
+                "type": "string"
+              },
+              "Price": {
+                "type": "integer"
+              },
+              "picture": {
+                "type": "string"
+              },
+              "in_stock": {
+                "type": "string"
+              },
+              "thumbnail": {
+                "type": "string"
+              },
+              "customer_votes": {
+                "type": "integer"
+              },
+              "items_sold": {
+                "type": "integer"
+              },
+              "big_picture": {
+                "type": "string"
+              },
+              "enabled": {
+                "type": "integer"
+              },
+              "brief_description": {
+                "type": "string"
+              },
+              "list_price": {
+                "type": "string"
+              },
+              "product_code": {
+                "type": "string"
+              },
+              "hurl": {
+                "type": "string"
+              },
+              "accompanyID": {
+                "type": "string"
+              },
+              "brandID": {
+                "type": "string"
+              },
+              "meta_title": {
+                "type": "string"
+              },
+              "meta_keywords": {
+                "type": "string"
+              },
+              "meta_desc": {
+                "type": "string"
+              },
+              "canonical": {
+                "type": "string"
+              },
+              "h1": {
+                "type": "string"
+              },
+              "yml": {
+                "type": "string"
+              },
+              "min_qunatity": {
+                "type": "string"
+              },
+              "managerID": {
+                "type": "string"
+              }
+            }
+          },
+          "UserProfileData": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "User ID number"
+              },
+              "username": {
+                "type": "string",
+                "description": "User name."
+              },
+              "first_name": {
+                "type": "string",
+                "description": "Users first name."
+              },
+              "last_name": {
+                "type": "string",
+                "description": "Users last name."
+              },
+              "user_phone": {
+                "type": "string",
+                "description": "Users phone number."
+              },
+              "email": {
+                "type": "string",
+                "description": "Users email address."
+              },
+              "oauth_provider": {
+                "type": "string",
+                "description": "For OAuth integration."
+              },
+              "oauth_uid": {
+                "type": "string",
+                "description": "For OAuth integration.."
+              },
+              "created_on": {
+                "type": "string",
+                "description": "Date account was created."
+              },
+              "last_login": {
+                "type": "string",
+                "description": "Date of last login."
+              },
+              "active": {
+                "type": "string",
+                "description": "User has active account."
+              },
+              "photo": {
+                "type": "string",
+                "description": "Users profile photo.."
+              },
+              "photoUrl": {
+                "type": "string",
+                "description": "Users profile photo.."
+              }
+            }
+          }
+        },
+        "links": {},
+        "callbacks": {}
+      },
+      "security": []
+    }
