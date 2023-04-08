@@ -282,7 +282,8 @@ Download CE on K8S site manifest. Manifest can e downloaded ad https://gitlab.co
   Length: 6539 (6.4K) [text/plain]
   Saving to: ‘ce_k8s.yml’
   
-  ce_k8s.yml                                              100%  [=================================================================================================================  ===========>]   6.39K  --.-KB/s    in 0s
+  ce_k8s.yml                                              100%  [======================================================================================================
+  ======================>]   6.39K  --.-KB/s    in 0s
   
   2022-10-26 06:24:28 (94.9 MB/s) - ‘ce_k8s.yml’ saved [6539/6539]
 
@@ -295,9 +296,142 @@ Depend on your environment, updates appropriately.
 
 .. figure:: ./images/vpm-replicas.png
 
+Uncomment Service definition to enable nodeport for site to site access (e.g. site mesh group).
+
+::
+
+  # CHANGE ME
+  # PLEASE UNCOMMENT TO ENABLE SITE TO SITE ACCESS VIA NODEPORT
+  ---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: ver-nodeport-ver-0
+    namespace: ves-system
+    labels:
+      app: ver
+  spec:
+    type: NodePort
+    ports:
+      - name: "ver-ike"
+        protocol: UDP
+        port: 4500
+        targetPort: 4500
+        nodePort: 30500
+    selector:
+      statefulset.kubernetes.io/pod-name: ver-0
+  ---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: ver-nodeport-ver-1
+    namespace: ves-system
+    labels:
+      app: ver
+  spec:
+    type: NodePort
+    ports:
+      - name: "ver-ike"
+        protocol: UDP
+        port: 4500
+        targetPort: 4500
+        nodePort: 30501
+    selector:
+      statefulset.kubernetes.io/pod-name: ver-1
+  ---
+  apiVersion: v1
+  kind: Service
+  metadata:
+    name: ver-nodeport-ver-2
+    namespace: ves-system
+    labels:
+      app: ver
+  spec:
+    type: NodePort
+    ports:
+      - name: "ver-ike"
+        protocol: UDP
+        port: 4500
+        targetPort: 4500
+        nodePort: 30502
+    selector:
+      statefulset.kubernetes.io/pod-name: ver-2
+
+
 2.3 Apply ce_k8s.yaml deployment.
 
+::
+
+  fbchan@forest:~/ocp-au$ oc create ns ves-system
+  namespace/ves-system created
+  
+  fbchan@forest:~/ocp-au$ oc adm policy add-scc-to-user privileged -z default -n ves-system
+  clusterrole.rbac.authorization.k8s.io/system:openshift:scc:privileged added: "default"
+  
+  fbchan@forest:~/ocp-au$ oc create -f ce_k8s.yml
+  namespace/ves-system created
+  serviceaccount/volterra-sa created
+  role.rbac.authorization.k8s.io/volterra-admin-role created
+  rolebinding.rbac.authorization.k8s.io/volterra-admin-role-binding created
+  daemonset.apps/volterra-ce-init created
+  serviceaccount/vpm-sa created
+  role.rbac.authorization.k8s.io/vpm-role created
+  clusterrole.rbac.authorization.k8s.io/vpm-cluster-role created
+  rolebinding.rbac.authorization.k8s.io/vpm-role-binding created
+  clusterrolebinding.rbac.authorization.k8s.io/vpm-sa created
+  clusterrolebinding.rbac.authorization.k8s.io/ver created
+  configmap/vpm-cfg created
+  statefulset.apps/vp-manager created
+  service/vpm created
+  
+  fbchan@forest:~/ocp-au$ oc -n ves-system get pod,pvc
+  NAME                         READY   STATUS    RESTARTS   AGE
+  pod/volterra-ce-init-2kdpd   1/1     Running   0          2m20s
+  pod/volterra-ce-init-4hh6m   1/1     Running   0          2m20s
+  pod/volterra-ce-init-tzwds   1/1     Running   0          2m20s
+  pod/vp-manager-0             1/1     Running   0          68s
+  pod/vp-manager-1             1/1     Running   0          77s
+  pod/vp-manager-2             1/1     Running   0          88s
+  
+  NAME                                        STATUS   VOLUME                                     CAPACITY   ACCESS   MODES   STORAGECLASS   AGE
+  persistentvolumeclaim/data-vp-manager-0     Bound    pvc-1d28203e-4a2d-4126-af4d-825d4bbc9d07   1Gi          RWO            managed-nfs    2m20s
+  persistentvolumeclaim/data-vp-manager-1     Bound    pvc-9eeebb9f-c8e9-46fd-8878-4eb00212d79b   1Gi          RWO            managed-nfs    2m8s
+  persistentvolumeclaim/data-vp-manager-2     Bound    pvc-e095bbfe-d92e-46a0-8aec-b4dc88906f19   1Gi          RWO            managed-nfs    118s
+  persistentvolumeclaim/etcvpm-vp-manager-0   Bound    pvc-490d792e-a1ad-416f-afae-d5d687b10a6d   1Gi          RWO            managed-nfs    2m20s
+  persistentvolumeclaim/etcvpm-vp-manager-1   Bound    pvc-228600ea-256b-4214-bc20-02de68011baa   1Gi          RWO            managed-nfs    2m8s
+  persistentvolumeclaim/etcvpm-vp-manager-2   Bound    pvc-dc221ff8-695f-45ae-8b84-36ba190f5563   1Gi          RWO            managed-nfs    118s
+  persistentvolumeclaim/varvpm-vp-manager-0   Bound    pvc-aa2b9eb5-2c2d-4abd-94e1-eb302eedb47a   1Gi          RWO            managed-nfs    2m20s
+  persistentvolumeclaim/varvpm-vp-manager-1   Bound    pvc-4a85c2ac-d78b-43e5-8a70-924f9caea852   1Gi          RWO            managed-nfs    2m8s
+  persistentvolumeclaim/varvpm-vp-manager-2   Bound    pvc-de41afd2-f09f-4fc3-a0bd-fa8bc77c37ff   1Gi          RWO            managed-nfs    118s
+
+
 2.4 Approve registration of VER on F5 XC Console
+
+.. figure:: ./images/approve-reg.png
+
+.. figure:: ./images/cluster_size_3.png
+
+.. figure:: ./images/ocp-au-site.png
+
+Example running F5 XC Cloud mesh pod on OCP
+
+::
+
+  fbchan@forest:~/ocp-au$ oc -n ves-system get pod
+  NAME                          READY   STATUS    RESTARTS      AGE
+  etcd-0                        2/2     Running   0             13h
+  etcd-1                        2/2     Running   0             13h
+  etcd-2                        2/2     Running   0             13h
+  prometheus-857f979859-cmts7   5/5     Running   0             13h
+  ver-0                         16/16   Running   0             13h
+  ver-1                         16/16   Running   0             13h
+  ver-2                         16/16   Running   0             13h
+  volterra-ce-init-2kdpd        1/1     Running   0             13h
+  volterra-ce-init-4hh6m        1/1     Running   0             13h
+  volterra-ce-init-tzwds        1/1     Running   0             13h
+  vp-manager-0                  1/1     Running   2 (13h ago)   13h
+  vp-manager-1                  1/1     Running   1 (13h ago)   13h
+  vp-manager-2                  1/1     Running   2 (13h ago)   13h
 
 2.5 Create ver-dns service
 
