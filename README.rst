@@ -270,7 +270,30 @@ Step 2 - Deploy Cloud Mesh Pod
 
 2.1  Download ce_k8s.yaml manifest.
 
+Download CE on K8S site manifest. Manifest can e downloaded ad https://gitlab.com/volterra.io/volterra-ce
+
+::
+
+  fbchan@forest:~/ocp-au$ wget https://gitlab.com/volterra.io/volterra-ce/-/raw/master/k8s/ce_k8s.yml
+  --2022-10-26 06:24:27--  https://gitlab.com/volterra.io/volterra-ce/-/raw/master/k8s/ce_k8s.yml
+  Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
+  Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
+  HTTP request sent, awaiting response... 200 OK
+  Length: 6539 (6.4K) [text/plain]
+  Saving to: ‘ce_k8s.yml’
+  
+  ce_k8s.yml                                              100%  [=================================================================================================================  ===========>]   6.39K  --.-KB/s    in 0s
+  
+  2022-10-26 06:24:28 (94.9 MB/s) - ‘ce_k8s.yml’ saved [6539/6539]
+
+
 2.2 Update ce_k8s.yaml deployment according to your env.
+
+Depend on your environment, updates appropriately.
+
+.. figure:: ./images/site-token.png
+
+.. figure:: ./images/vpm-replicas.png
 
 2.3 Apply ce_k8s.yaml deployment.
 
