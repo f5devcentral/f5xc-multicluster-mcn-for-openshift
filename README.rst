@@ -470,8 +470,13 @@ dns-ver-svc.yaml
     selector:
       app: ver
 
-kubectl apply -f dns-ver-svc.yaml
+:: 
 
+  kubectl -n ves-system apply -f dns-ver-svc.yaml
+
+  fbchan@forest:~/ocp-au$ oc -n ves-system get svc ver-dns
+  NAME      TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)         AGE
+  ver-dns   ClusterIP   172.30.5.75   <none>        53/UDP,53/TCP   143d
 
 
 2.6 Update OCP DNS Operator to delegate domain to ver-dns
