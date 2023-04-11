@@ -608,6 +608,134 @@ Repeat registration for ocp-sg and ocp-hk
 
 .. figure:: ./images/ocp-sites.png
 
+Here are all my OCP env.
+
+**ocp-au**
+
+::
+
+  fbchan@forest:~/ocp-au$ oc get node
+  NAME                      STATUS   ROLES                     AGE    VERSION
+  ocp-au1.ocp.edgecnf.com   Ready    master,worker,worker-hp   166d   v1.22.8+9e95cb9
+  ocp-au2.ocp.edgecnf.com   Ready    master,worker,worker-hp   166d   v1.22.8+9e95cb9
+  ocp-au3.ocp.edgecnf.com   Ready    master,worker,worker-hp   166d   v1.22.8+9e95cb9
+
+
+  fbchan@forest:~/ocp-au$ oc -n ves-system get pod,svc,pvc
+  NAME                              READY   STATUS    RESTARTS        AGE
+  pod/etcd-0                        2/2     Running   2               25d
+  pod/etcd-1                        2/2     Running   2               25d
+  pod/etcd-2                        2/2     Running   2               25d
+  pod/prometheus-7b6dfc8f8d-5vcf2   5/5     Running   5               25d
+  pod/ver-0                         16/16   Running   389 (10m ago)   14d
+  pod/ver-1                         16/16   Running   392 (33m ago)   14d
+  pod/ver-2                         16/16   Running   134 (33m ago)   14d
+  pod/volterra-ce-init-4jq8s        1/1     Running   1               158d
+  pod/volterra-ce-init-89djm        1/1     Running   1               158d
+  pod/volterra-ce-init-nbps7        1/1     Running   1               158d
+  pod/vp-manager-0                  1/1     Running   2 (85m ago)     15d
+  pod/vp-manager-1                  1/1     Running   3 (82m ago)     15d
+  pod/vp-manager-2                  1/1     Running   3 (82m ago)     15d
+  
+  NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                                                                                                                                                                                                                                                                     AGE
+  service/etcd                 ClusterIP   None             <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/etcd-0               ClusterIP   172.30.33.212    <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/etcd-1               ClusterIP   172.30.117.212   <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/etcd-2               ClusterIP   172.30.255.200   <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/prometheus           ClusterIP   172.30.40.59     <none>        32222/TCP                                                                                                                                                                                                                                                                                                   158d
+  service/prometheus-statsd    ClusterIP   172.30.138.160   <none>        65341/TCP,65341/UDP                                                                                                                                                                                                                                                                                         158d
+  service/pushgateway          ClusterIP   172.30.194.143   <none>        65220/TCP                                                                                                                                                                                                                                                                                                   158d
+  service/ver                  NodePort    172.30.159.50    <none>        8005:30805/TCP,9999:31885/TCP,8505:30855/TCP,9005:30905/TCP,9505:30955/TCP,18095:30906/TCP,18091:30817/TCP,18092:30101/TCP,18093:31583/TCP,18094:30171/TCP,65042:31628/TCP,9007:31471/TCP,65040:31450/TCP,65041:30605/TCP,65045:30675/TCP,65111:31289/TCP,65110:30975/TCP,65112:30514/TCP,65131:31832/TCP   158d
+  service/ver-dns              ClusterIP   172.30.5.75      <none>        53/UDP,53/TCP                                                                                                                                                                                                                                                                                               146d
+  service/ver-nodeport-ver-0   NodePort    172.30.93.207    <none>        4500:30500/UDP                                                                                                                                                                                                                                                                                              158d
+  service/ver-nodeport-ver-1   NodePort    172.30.29.116    <none>        4500:30501/UDP                                                                                                                                                                                                                                                                                              158d
+  service/ver-nodeport-ver-2   NodePort    172.30.221.221   <none>        4500:30502/UDP                                                                                                                                                                                                                                                                                              158d
+  service/vpm                  NodePort    172.30.86.82     <none>        65003:30322/TCP                                                                                                                                                                                                                                                                                             158d
+  
+  NAME                                        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+  persistentvolumeclaim/data-etcd-0           Bound    pvc-cecfb17a-8627-43c0-912a-fe3670eacdcb   5Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/data-etcd-1           Bound    pvc-88c77314-5e98-483d-940c-c6eaed687bbc   5Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/data-etcd-2           Bound    pvc-6efc1dbb-049c-4bad-91a6-d477b97221ce   5Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/data-vp-manager-0     Bound    pvc-df5746a1-f0d1-454e-ac22-5dea3d144694   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/data-vp-manager-1     Bound    pvc-20b46956-251d-46e0-b0c3-416e3e384b6f   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/data-vp-manager-2     Bound    pvc-37a77d6a-8666-42d3-8e55-f19464c2bdf5   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/etcvpm-vp-manager-0   Bound    pvc-79440590-63d0-421f-9a6e-54cb27e77478   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/etcvpm-vp-manager-1   Bound    pvc-17d35b6c-8d92-4199-a997-98ffa6d3b45d   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/etcvpm-vp-manager-2   Bound    pvc-7efc8eaa-a1ea-4f65-b827-93da3faa5c8c   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/varvpm-vp-manager-0   Bound    pvc-18e85250-d34e-439d-aab2-02c2d709e59a   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/varvpm-vp-manager-1   Bound    pvc-8d0a2bac-1324-48cc-8a97-dd7a8a5241c2   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/varvpm-vp-manager-2   Bound    pvc-91279d3e-70be-4505-a319-5e3be543a259   1Gi        RWO            managed-nfs    158d
+
+
+**ocp-sg**
+
+::
+
+  fbchan@forest:~/ocp-sg$ oc get node
+  NAME                     STATUS   ROLES                     AGE    VERSION
+  ocp-sg.ocp.edgecnf.com   Ready    master,worker,worker-hp   278d   v1.23.5+3afdacb
+
+
+  fbchan@forest:~/ocp-sg$ oc -n ves-system get pod,svc,pvc
+  NAME                              READY   STATUS    RESTARTS        AGE
+  pod/etcd-0                        2/2     Running   2               25d
+  pod/prometheus-6bbc5d7f5b-q5qkc   5/5     Running   6 (15d ago)     25d
+  pod/ver-0                         16/16   Running   217 (27m ago)   14d
+  pod/volterra-ce-init-tg7q8        1/1     Running   2               158d
+  pod/vp-manager-0                  1/1     Running   4 (87m ago)     15d
+  
+  NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                                                                                                                                                                                                                                                                     AGE
+  service/etcd                 ClusterIP   None             <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/etcd-0               ClusterIP   172.30.222.198   <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/prometheus           ClusterIP   172.30.164.191   <none>        32222/TCP                                                                                                                                                                                                                                                                                                   158d
+  service/prometheus-statsd    ClusterIP   172.30.22.29     <none>        65341/TCP,65341/UDP                                                                                                                                                                                                                                                                                         158d
+  service/pushgateway          ClusterIP   172.30.48.60     <none>        65220/TCP                                                                                                                                                                                                                                                                                                   158d
+  service/ver                  NodePort    172.30.20.27     <none>        8005:30805/TCP,9999:32618/TCP,8505:30855/TCP,9005:30905/TCP,9505:30955/TCP,18095:31110/TCP,18091:30178/TCP,18092:31793/TCP,18093:32386/TCP,18094:30408/TCP,65042:32556/TCP,9007:30661/TCP,65040:31048/TCP,65041:30623/TCP,65045:31260/TCP,65111:32423/TCP,65110:31387/TCP,65112:30701/TCP,65131:31362/TCP   158d
+  service/ver-dns              ClusterIP   172.30.109.190   <none>        53/UDP,53/TCP                                                                                                                                                                                                                                                                                               146d
+  service/ver-nodeport-ver-0   NodePort    172.30.167.128   <none>        4500:30500/UDP                                                                                                                                                                                                                                                                                              158d
+  service/vpm                  NodePort    172.30.191.97    <none>        65003:30908/TCP                                                                                                                                                                                                                                                                                             158d
+  
+  NAME                                        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+  persistentvolumeclaim/data-etcd-0           Bound    pvc-a895608f-9ca2-4cec-aacd-57260390e20e   5Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/data-vp-manager-0     Bound    pvc-4e533c13-71a0-45ce-861b-63d524f29864   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/etcvpm-vp-manager-0   Bound    pvc-3ffe2e17-cca9-4170-bcf8-61fe6df132d7   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/varvpm-vp-manager-0   Bound    pvc-42436766-4795-4ea3-98f3-853a89f243c0   1Gi        RWO            managed-nfs    158d
+
+
+**ocp-hk**
+
+::
+
+  fbchan@forest:~/ocp-hk$ oc get node
+  NAME                     STATUS   ROLES           AGE    VERSION
+  ocp-hk.ocp.edgecnf.com   Ready    master,worker   163d   v1.22.8+9e95cb9
+
+
+  fbchan@forest:~/ocp-hk$ oc -n ves-system get pod,svc,pvc
+  NAME                              READY   STATUS    RESTARTS      AGE
+  pod/etcd-0                        2/2     Running   3             25d
+  pod/prometheus-6fccdbb8f8-x7rrh   5/5     Running   9 (15d ago)   25d
+  pod/ver-0                         16/16   Running   2 (14d ago)   14d
+  pod/volterra-ce-init-x4dqz        1/1     Running   2             158d
+  pod/vp-manager-0                  1/1     Running   4 (88m ago)   15d
+  
+  NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                                                                                                                                                                                                                                                                     AGE
+  service/etcd                 ClusterIP   None             <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/etcd-0               ClusterIP   172.30.254.126   <none>        2379/TCP,2380/TCP,65535/TCP                                                                                                                                                                                                                                                                                 158d
+  service/prometheus           ClusterIP   172.30.30.201    <none>        32222/TCP                                                                                                                                                                                                                                                                                                   158d
+  service/prometheus-statsd    ClusterIP   172.30.81.123    <none>        65341/TCP,65341/UDP                                                                                                                                                                                                                                                                                         158d
+  service/pushgateway          ClusterIP   172.30.101.3     <none>        65220/TCP                                                                                                                                                                                                                                                                                                   158d
+  service/ver                  NodePort    172.30.98.130    <none>        8005:30805/TCP,9999:31893/TCP,8505:30855/TCP,9005:30905/TCP,9505:30955/TCP,18095:32442/TCP,18091:31572/TCP,18092:31636/TCP,18093:30359/TCP,18094:31729/TCP,65042:30316/TCP,9007:32339/TCP,65040:31414/TCP,65041:30070/TCP,65045:30167/TCP,65111:32670/TCP,65110:30723/TCP,65112:31048/TCP,65131:31381/TCP   158d
+  service/ver-dns              ClusterIP   172.30.220.29    <none>        53/UDP,53/TCP                                                                                                                                                                                                                                                                                               145d
+  service/ver-nodeport-ver-0   NodePort    172.30.107.197   <none>        4500:30500/UDP                                                                                                                                                                                                                                                                                              158d
+  service/vpm                  NodePort    172.30.3.198     <none>        65003:32592/TCP                                                                                                                                                                                                                                                                                             158d
+  
+  NAME                                        STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+  persistentvolumeclaim/data-etcd-0           Bound    pvc-87af3345-90ed-40b1-a72b-ae000b00094e   5Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/data-vp-manager-0     Bound    pvc-b3959849-58cf-46a8-90dc-8b3c86d40cf6   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/etcvpm-vp-manager-0   Bound    pvc-d52ca368-1998-4031-9d90-413365142c9c   1Gi        RWO            managed-nfs    158d
+  persistentvolumeclaim/varvpm-vp-manager-0   Bound    pvc-30988076-54a0-4cd5-9b79-2699e8357c66   1Gi        RWO            managed-nfs    158d
+
 Step 3 - Deploy Cloud Mesh Node
 ####################################
 3.1 Deploy Cloud Mesh Node.
