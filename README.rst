@@ -1093,7 +1093,7 @@ NGINX Web Server will be use to simulate application resiliency and failover fro
   service/nginx-web created
   deployment.apps/nginx-web created
 
-  
+
   fbchan@forest:~/ocp-hk/nginx-web$ oc -n nginx-web get pod,svc
   NAME                             READY   STATUS    RESTARTS   AGE
   pod/nginx-web-54979f7ddb-dsnwl   1/1     Running   0          2m20s
@@ -1107,8 +1107,11 @@ NGINX Web Server will be use to simulate application resiliency and failover fro
 
 
 **4.2 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)**
+---------------------------------------------------------------------------------
+
 
 **4.3 Terraform**
+-----------------
 
-**4.4 Install nginx web server.**
+
 
