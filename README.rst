@@ -772,6 +772,134 @@ https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
 3.3 Create service account for Mesh node service discovery.
 
+
+Create ClusterRole
+
+01-xc-svc-discovery-cr.yaml
+
+::
+
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: xc-svc-discovery-cr
+  rules:
+  - apiGroups: [""]
+    resources:
+    - services
+    - endpoints
+    - pods
+    - nodes
+    - nodes/proxy
+    - namespaces
+    verbs: ["get", "list", "watch"]
+
+
+02-xc-svc-discovery-sa.yaml
+
+::
+
+  apiVersion: v1
+  kind: ServiceAccount
+  metadata:
+    name: xc-svc-discovery-sa
+    namespace: default
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: xc-svc-discovery-crb
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: xc-svc-discovery-cr
+  subjects:
+  - kind: ServiceAccount
+    name: xc-svc-discovery-sa
+    namespace: default
+
+
+03-export-sa.sh
+
+::
+
+  export USER_TOKEN_NAME=$(kubectl -n default get serviceaccount xc-svc-discovery-sa -o=jsonpath='{.secrets[0].name}')
+  export USER_TOKEN_VALUE=$(kubectl -n default get secret/${USER_TOKEN_NAME} -o=go-template='{{.data.token}}' | base64 --decode)
+  export CURRENT_CONTEXT=$(kubectl config current-context)
+  export CURRENT_CLUSTER=$(kubectl config view --raw -o=go-template='{{range .contexts}}{{if eq .name "'''${CURRENT_CONTEXT}'''"}}{{ index .context "cluster" }}{{end}}{{end}}')
+  export CLUSTER_CA=$(kubectl config view --raw -o=go-template='{{range .clusters}}{{if eq .name "'''${CURRENT_CLUSTER}'''"}}"{{with index .cluster "certificate-authority-data" }}{{.}}{{end}}"{{ end }}{{ end }}')
+  export CLUSTER_SERVER=$(kubectl config view --raw -o=go-template='{{range .clusters}}{{if eq .name "'''${CURRENT_CLUSTER}'''"}}{{ .cluster.server }}{{end}}{{ end }}')
+  
+  cat << EOF > xc-svc-discovery-sa-default-kubeconfig
+  apiVersion: v1
+  kind: Config
+  current-context: ${CURRENT_CONTEXT}
+  contexts:
+  - name: ${CURRENT_CONTEXT}
+    context:
+      cluster: ${CURRENT_CONTEXT}
+      user: foobang.chan@f5.com
+      namespace: default
+  clusters:
+  - name: ${CURRENT_CONTEXT}
+    cluster:
+      certificate-authority-data: ${CLUSTER_CA}
+      server: ${CLUSTER_SERVER}
+  users:
+  - name: foobang.chan@f5.com
+    user:
+      token: ${USER_TOKEN_VALUE}
+  EOF
+
+
+::
+
+  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 01-xc-svc-discovery-cr.yaml
+  clusterrole.rbac.authorization.k8s.io/xc-svc-discovery-cr created
+
+
+Create Service account
+
+::
+
+  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
+  serviceaccount/xc-svc-discovery-sa created
+  clusterrolebinding.rbac.authorization.k8s.io/xc-svc-discovery-crb created
+  
+
+Create/Export kubeconfig file
+
+::
+
+  fbchan@forest:~/ocp-au/xc-svc-discovery$ ./03-export-sa.sh
+  fbchan@forest:~/ocp-au/xc-svc-discovery$ ls
+  01-xc-svc-discovery-cr.yaml  02-xc-svc-discovery-sa.yaml  03-export-sa.sh  xc-svc-discovery-sa-default-kubeconfig
+  fbchan@forest:~/ocp-au/xc-svc-discovery$
+  
+  
+  fbchan@forest:~/ocp-au/xc-svc-discovery$ cat xc-svc-discovery-sa-default-kubeconfig
+  apiVersion: v1
+  kind: Config
+  current-context: admin
+  contexts:
+  - name: admin
+    context:
+      cluster: admin
+      user: foobang.chan@f5.com
+      namespace: default
+  clusters:
+  - name: admin
+    cluster:
+      certificate-authority-data: "LS0xxx="
+      server: https://api.ocp-au.ocp.edgecnf.com:6443
+  users:
+  - name: foobang.chan@f5.com
+    user:
+      token: xxxx
+
+
+
+
 3.4 Setup pod network routing for ovn-kubernetes.
 
 .. figure:: ./images/ocp-sd04.png
