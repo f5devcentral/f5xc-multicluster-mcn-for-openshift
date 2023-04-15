@@ -870,6 +870,7 @@ Cluster Role only have limited privilege (e.g. Read-Only)
 
 
 ::
+  
   fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 01-xc-svc-discovery-cr.yaml
   clusterrole.rbac.authorization.k8s.io/xc-svc-discovery-cr created
 
