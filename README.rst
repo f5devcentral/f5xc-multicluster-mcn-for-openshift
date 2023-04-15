@@ -1036,6 +1036,75 @@ Arcadia microservices application will be use to demonstrate distriburted apps c
 --------------------------------
 NGINX Web Server will be use to simulate application resiliency and failover from OCP cluster to OCP cluster.
 
+**ocp-au**
+::
+
+  fbchan@forest:~/ocp-au/nginx-web$ oc create ns nginx-web
+  namespace/nginx-web created
+
+
+  fbchan@forest:~/ocp-au/nginx-web$ oc -n nginx-web apply -f nginx-web-ocp-au.yaml
+  service/nginx-web created
+  deployment.apps/nginx-web created
+
+
+  fbchan@forest:~/ocp-au/nginx-web$ oc -n nginx-web get pod,svc
+  NAME                            READY   STATUS    RESTARTS   AGE
+  pod/nginx-web-64688cf8f-96d2k   1/1     Running   0          44s
+  pod/nginx-web-64688cf8f-hq8jg   1/1     Running   0          44s
+  pod/nginx-web-64688cf8f-ssncm   1/1     Running   0          43s
+  
+  NAME                TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+  service/nginx-web   ClusterIP   172.30.144.67   <none>        8080/TCP   44s
+
+
+
+**ocp-sg**
+::
+
+  fbchan@forest:~/ocp-sg/nginx-web$ oc create ns nginx-web
+  namespace/nginx-web created
+
+
+  fbchan@forest:~/ocp-sg/nginx-web$ oc -n nginx-web apply -f nginx-web-ocp-sg.yaml
+  service/nginx-web created
+  deployment.apps/nginx-web created
+
+
+  fbchan@forest:~/ocp-sg/nginx-web$ oc -n nginx-web get pod,svc
+  NAME                             READY   STATUS    RESTARTS   AGE
+  pod/nginx-web-55868d8d9f-l8rnd   1/1     Running   0          54s
+  pod/nginx-web-55868d8d9f-rrqt4   1/1     Running   0          54s
+  pod/nginx-web-55868d8d9f-sjv56   1/1     Running   0          54s
+  
+  NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+  service/nginx-web   ClusterIP   172.30.103.189   <none>        8080/TCP   55s
+
+
+
+**ocp-hk**
+::
+
+  fbchan@forest:~/ocp-hk/nginx-web$ oc create ns nginx-web
+  namespace/nginx-web created
+
+
+  fbchan@forest:~/ocp-hk/nginx-web$ oc -n nginx-web apply -f nginx-web-ocp-hk.yaml
+  service/nginx-web created
+  deployment.apps/nginx-web created
+
+  
+  fbchan@forest:~/ocp-hk/nginx-web$ oc -n nginx-web get pod,svc
+  NAME                             READY   STATUS    RESTARTS   AGE
+  pod/nginx-web-54979f7ddb-dsnwl   1/1     Running   0          2m20s
+  pod/nginx-web-54979f7ddb-j2tgk   1/1     Running   0          2m20s
+  pod/nginx-web-54979f7ddb-m79r2   1/1     Running   0          2m20s
+  
+  NAME                TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+  service/nginx-web   ClusterIP   172.30.238.15   <none>        8080/TCP   2m20s
+
+
+
 
 **4.2 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)**
 
