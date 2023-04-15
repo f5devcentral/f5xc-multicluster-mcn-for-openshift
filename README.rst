@@ -531,7 +531,8 @@ DNS default configmap before update with DNS Operator
     uid: d3866bc7-31f5-453f-b9d7-6315d85af400
 
 
-Upates DNS operator to delegate xcmesh.global to Cloud Mesh pod
+Upates DNS operator to delegate xcmesh.global to Cloud Mesh pod.
+Note: "xcmesh.global" domain will be use in Multi-Cloud App Connect configuration. 
 
 dns-operator-ocp-au.yaml
 
@@ -862,6 +863,7 @@ Cluster Role only have limited privilege (e.g. Read-Only)
 
 
 Create Service account
+----------------------
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
@@ -870,6 +872,7 @@ Create Service account
   
 
 Create/Export kubeconfig file
+-----------------------------
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ ./03-export-sa.sh
