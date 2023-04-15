@@ -30,6 +30,7 @@ Objective
 Step 1 - OCP Environment
 ################################
 **1.1  Deploy/Ensure OpenShift Cluster and Ready**
+--------------------------------------------------
 
 Building an OCP cluster is beyond the scope of this guide. Please refer to RedHat official documentation. Hence, assumption that you already have an existing OCP up and running. With minor changes, this instruction can be use for non-OCP – EKS, AKS and GKE.
 
@@ -56,6 +57,7 @@ Example of my OCP Environment used in this guide.
     ocp-hk.ocp.edgecnf.com   Ready    master,worker   159d   v1.22.8+9e95cb9
 
 **1.2 Enable/Ensure kernel hugepages available and sufficient.**
+-----------------------------------------------------------------
 
 Note: Only the ocp-au cluster will be shown. Repeat similar task for ocp-sg and ocp-hk
 
@@ -180,6 +182,7 @@ Do not continue until you have hugepages configured. Example above shown that I 
 
 
 **1.3 Ensure StorageClass configured and Persistent Volume (PVC) working.**
+---------------------------------------------------------------------------
 
 Deployment of CE site on K8S require persistent volume (PV). If you don’t have pv configured, here an example to deploy a NFS provisioner for OCP.
 
