@@ -11,16 +11,6 @@ Objective
 ################################
 
 
-**Steps 1 - OCP Environment**
-
-**Step 2 - Deploy Cloud Mesh Pod**
-
-**Step 2 - Deploy Cloud Mesh Pod**
-
-**Step 3 - Deploy Cloud Mesh Node**
-
-
-**Step 4 - Deploy application on OpenShift**
 
 
 .. figure:: ./images/mesh-fabric.png
@@ -1107,11 +1097,11 @@ NGINX Web Server will be use to simulate application resiliency and failover fro
 
 
 
-**4.2 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)**
+**4.3 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)**
 ---------------------------------------------------------------------------------
 
 
-**4.3 Terraform**
+**4.4 Terraform**
 -----------------
 
 
