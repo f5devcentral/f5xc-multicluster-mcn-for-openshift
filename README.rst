@@ -776,7 +776,6 @@ https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 Create ClusterRole
 
 01-xc-svc-discovery-cr.yaml
-
 ::
 
   apiVersion: rbac.authorization.k8s.io/v1
@@ -796,7 +795,6 @@ Create ClusterRole
 
 
 02-xc-svc-discovery-sa.yaml
-
 ::
 
   apiVersion: v1
@@ -820,7 +818,6 @@ Create ClusterRole
 
 
 03-export-sa.sh
-
 ::
 
   export USER_TOKEN_NAME=$(kubectl -n default get serviceaccount xc-svc-discovery-sa -o=jsonpath='{.secrets[0].name}')
