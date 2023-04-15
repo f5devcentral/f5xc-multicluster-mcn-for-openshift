@@ -739,6 +739,22 @@ Here are all my OCP env.
 Step 3 - Deploy Cloud Mesh Node
 ####################################
 3.1 Deploy Cloud Mesh Node.
+Depends on type of Cloud Mesh Node type (VMware, KVM or Cloud Site), please refer official documentation to spin up a Cloud Mesh node. This guide assume that you already has a running Cloud Mesh Node. This guide written based on a VMWare Cloud Node site.
+
+VMWare Site
+https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
+
+KVM Site
+https://docs.cloud.f5.com/docs/how-to/site-management/create-kvm-libvirt-site
+
+AWS Site
+https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
+
+Azure Site
+https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
+
+GCP Site
+https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
 3.2 Setup service discovery of Mesh Node to OCP
 
@@ -762,6 +778,92 @@ Step 4 - Deploy application on OpenShift
 ###############################################
 
 4.1 Install Apps (Arcadia)
+
+.. figure:: ./images/arcadia-apps.png
+
+**ocp-au**
+
+::
+
+  fbchan@forest:~/ocp-au$ oc create ns arcadia-ocp
+  namespace/arcadia-ocp created
+
+  fbchan@forest:~/ocp-au/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp apply -f frontend/
+  configmap/api-gw.json created
+  configmap/api-gw-fe.json created
+  deployment.apps/frontend created
+  service/frontend created
+  configmap/fe-to-money-backend-referfriends-postman.json created
+  configmap/fe-to-money-backend-referfriends-postman.json configured
+  configmap/sc-nginx-conf-fe-cm created
+  configmap/sc-nginx-default-conf-9090-fe-cm created
+  configmap/run-apigen-fe.sh created
+  fbchan@forest:~/ocp-au/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$
+  
+  fbchan@forest:~/ocp-au/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp get pod,svc
+  NAME                            READY   STATUS    RESTARTS   AGE
+  pod/frontend-6f866c5b57-rqwv8   4/4     Running   0          44s
+  
+  NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+  service/frontend   ClusterIP   172.30.158.90   <none>        80/TCP    45s
+
+
+**ocp-sg**
+
+::
+
+  fbchan@forest:~/ocp-sg$ oc create ns arcadia-ocp
+  namespace/arcadia-ocp created
+
+  fbchan@forest:~/ocp-sg/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp apply -f backend/
+  configmap/api-gw-be.json created
+  configmap/api-gw.json created
+  deployment.apps/backend created
+  service/backend created
+  configmap/sc-nginx-default-conf-9090-be-cm created
+  
+  fbchan@forest:~/ocp-sg/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp get pod,svc
+  NAME                           READY   STATUS    RESTARTS   AGE
+  pod/backend-576d768fd6-nmfx8   3/3     Running   0          17s
+  
+  NAME              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+  service/backend   ClusterIP   172.30.68.153   <none>        80/TCP    17s
+
+
+**ocp-hk**
+
+::
+
+  fbchan@forest:~/ocp-hk$ oc create ns arcadia-ocp
+  namespace/arcadia-ocp created
+
+
+  fbchan@forest:~/ocp-hk/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp apply -f money-transfer/
+  configmap/api-gw.json created
+  configmap/api-gw-mt.json created
+  deployment.apps/money-transfer created
+  service/money-transfer created
+  configmap/east-west-mt-to-be-postman.json created
+  configmap/sc-nginx-default-conf-9090-mt-cm created
+  configmap/run-apigen-mt.sh created
+  fbchan@forest:~/ocp-hk/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp apply -f refer-friends/
+  configmap/api-gw-rf.json created
+  deployment.apps/refer-friends created
+  service/refer-friends created
+  configmap/sc-nginx-default-conf-9090-rf-cm created
+  
+  fbchan@forest:~/ocp-hk/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp get pod,svc
+  NAME                                  READY   STATUS    RESTARTS   AGE
+  pod/money-transfer-755d9dd854-hb7jj   4/4     Running   0          25s
+  pod/refer-friends-6b5597847f-ldsm7    3/3     Running   0          18s
+  
+  NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+  service/money-transfer   ClusterIP   172.30.166.29    <none>        80/TCP    25s
+  service/refer-friends    ClusterIP   172.30.177.166   <none>        80/TCP    18s
+
+
+
+
 
 4.2 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)
 
