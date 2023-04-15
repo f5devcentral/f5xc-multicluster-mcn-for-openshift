@@ -756,6 +756,7 @@ Step 3 - Deploy Cloud Mesh Node
 ####################################
 
 **3.1 Deploy Cloud Mesh Node.**
+-------------------------------
 
 Depends on the type of Cloud Mesh Node (VMware, KVM or Cloud Site), please refer official documentation to spin up a Cloud Mesh node. This guide assume that you already has a running Cloud Mesh Node. This guide written based on a VMWare Cloud Node site - Secure Mesh Site.
 
@@ -785,6 +786,7 @@ https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
 https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
 **3.2 Create service account for Mesh node service discovery.**
+---------------------------------------------------------------
 
 For Cloud Mesh nodes reside outside of OCP, service discovery is neccessary for Cloud Mesh Node to discover pod lifecycle. A read-only limited credential (service account) will be created to be imported into Cloud Mesh Node. 
 
