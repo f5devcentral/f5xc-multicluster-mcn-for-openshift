@@ -804,6 +804,15 @@ Cluster Role only have limited privilege (e.g. Read-Only)
     verbs: ["get", "list", "watch"]
 
 
+::
+
+  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 01-xc-svc-discovery-cr.yaml
+  clusterrole.rbac.authorization.k8s.io/xc-svc-discovery-cr created
+
+
+Create Service account
+~~~~~~~~~~~~~~~~~~~~~~
+
 02-xc-svc-discovery-sa.yaml
 ::
 
@@ -825,6 +834,17 @@ Cluster Role only have limited privilege (e.g. Read-Only)
   - kind: ServiceAccount
     name: xc-svc-discovery-sa
     namespace: default
+
+
+::
+
+  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
+  serviceaccount/xc-svc-discovery-sa created
+  clusterrolebinding.rbac.authorization.k8s.io/xc-svc-discovery-crb created
+  
+
+Create/Export kubeconfig file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 03-export-sa.sh
@@ -858,25 +878,6 @@ Cluster Role only have limited privilege (e.g. Read-Only)
       token: ${USER_TOKEN_VALUE}
   EOF
 
-
-::
-
-  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 01-xc-svc-discovery-cr.yaml
-  clusterrole.rbac.authorization.k8s.io/xc-svc-discovery-cr created
-
-
-Create Service account
-~~~~~~~~~~~~~~~~~~~~~~
-
-::
-
-  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
-  serviceaccount/xc-svc-discovery-sa created
-  clusterrolebinding.rbac.authorization.k8s.io/xc-svc-discovery-crb created
-  
-
-Create/Export kubeconfig file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
