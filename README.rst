@@ -275,6 +275,7 @@ Step 2 - Deploy Cloud Mesh Pod
 ################################
 
 **2.1  Download ce_k8s.yaml manifest.**
+---------------------------------------
 
 Download CE on K8S site manifest. Manifest can e downloaded ad https://gitlab.com/volterra.io/volterra-ce
 
@@ -295,6 +296,7 @@ Download CE on K8S site manifest. Manifest can e downloaded ad https://gitlab.co
 
 
 **2.2 Update ce_k8s.yaml deployment according to your env.**
+------------------------------------------------------------
 
 Depend on your environment, updates appropriately.
 
@@ -365,6 +367,7 @@ Uncomment Service definition to enable nodeport for site to site access (e.g. si
 
 
 **2.3 Apply ce_k8s.yaml deployment.**
+-------------------------------------
 
 ::
 
@@ -412,6 +415,7 @@ Uncomment Service definition to enable nodeport for site to site access (e.g. si
 
 
 **2.4 Approve registration of VER on F5 XC Console**
+----------------------------------------------------
 
 .. figure:: ./images/approve-reg.png
 
@@ -440,6 +444,7 @@ Example running F5 XC Cloud mesh pod on OCP
   vp-manager-2                  1/1     Running   2 (13h ago)   13h
 
 **2.5 Create ver-dns service**
+------------------------------
 
 This is to ensure that ver-dns service has a static ClusterIP. During software updates, ver-0, ver-1 and ver-2 will be restarted and ver pods IP may change. 
 
@@ -486,6 +491,7 @@ dns-ver-svc.yaml
 
 
 **2.6 Update OCP DNS Operator to delegate domain to ver-dns**
+-------------------------------------------------------------
 
 Note: If you using other Kubernetes, you may need to update CoreDNS/KubeDNS or the respective Kubernetes.
 
@@ -617,7 +623,8 @@ Repeat similar registration for ocp-sg and ocp-hk site.
 
 .. figure:: ./images/ocp-sites.png
 
-Here are my working OCP env.
+**Cloud Mesh Pod - OpenShift Environment**
+-------------------------------------------
 
 **ocp-au**
 
