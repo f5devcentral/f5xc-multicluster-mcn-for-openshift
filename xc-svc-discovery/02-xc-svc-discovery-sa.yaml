@@ -1,0 +1,21 @@
+# fbchan-sa.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: xc-svc-discovery-sa
+  namespace: default
+---
+# fbchan-sa-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: xc-svc-discovery-crb
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: xc-svc-discovery-cr
+subjects:
+- kind: ServiceAccount
+  name: xc-svc-discovery-sa
+  namespace: default
+---
