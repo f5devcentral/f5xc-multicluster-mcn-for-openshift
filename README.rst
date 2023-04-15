@@ -875,7 +875,7 @@ Cluster Role only have limited privilege (e.g. Read-Only)
 
 
 Create Service account
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
@@ -884,7 +884,7 @@ Create Service account
   
 
 Create/Export kubeconfig file
------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ ./03-export-sa.sh
@@ -914,6 +914,7 @@ Create/Export kubeconfig file
       token: xxxx
 
 **3.3 Setup service discovery of Mesh Node to OCP**
+---------------------------------------------------
 
 .. figure:: ./images/ocp-sd01.png
 
@@ -933,6 +934,9 @@ Step 4 - Deploy application on OpenShift
 ###############################################
 
 **4.1 Install Apps (Arcadia)**
+------------------------------
+Arcadia microservices application will be use to demonstrate distriburted apps capabilites of F5 Multi-Cloud App Connect. Various microservices will be distributed across multiple OpenShift cluster. 
+
 
 .. figure:: ./images/arcadia-apps.png
 
@@ -942,6 +946,7 @@ Step 4 - Deploy application on OpenShift
 
   fbchan@forest:~/ocp-au$ oc create ns arcadia-ocp
   namespace/arcadia-ocp created
+
 
   fbchan@forest:~/ocp-au/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp apply -f frontend/
   configmap/api-gw.json created
@@ -953,8 +958,8 @@ Step 4 - Deploy application on OpenShift
   configmap/sc-nginx-conf-fe-cm created
   configmap/sc-nginx-default-conf-9090-fe-cm created
   configmap/run-apigen-fe.sh created
-  fbchan@forest:~/ocp-au/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$
-  
+
+
   fbchan@forest:~/ocp-au/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp get pod,svc
   NAME                            READY   STATUS    RESTARTS   AGE
   pod/frontend-6f866c5b57-rqwv8   4/4     Running   0          44s
@@ -970,6 +975,7 @@ Step 4 - Deploy application on OpenShift
   fbchan@forest:~/ocp-sg$ oc create ns arcadia-ocp
   namespace/arcadia-ocp created
 
+
   fbchan@forest:~/ocp-sg/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp apply -f backend/
   configmap/api-gw-be.json created
   configmap/api-gw.json created
@@ -977,6 +983,7 @@ Step 4 - Deploy application on OpenShift
   service/backend created
   configmap/sc-nginx-default-conf-9090-be-cm created
   
+
   fbchan@forest:~/ocp-sg/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp get pod,svc
   NAME                           READY   STATUS    RESTARTS   AGE
   pod/backend-576d768fd6-nmfx8   3/3     Running   0          17s
@@ -1007,6 +1014,7 @@ Step 4 - Deploy application on OpenShift
   service/refer-friends created
   configmap/sc-nginx-default-conf-9090-rf-cm created
   
+
   fbchan@forest:~/ocp-hk/f5xc-multicluster-mcn-for-openshift/arcadia-ocp$ oc -n arcadia-ocp get pod,svc
   NAME                                  READY   STATUS    RESTARTS   AGE
   pod/money-transfer-755d9dd854-hb7jj   4/4     Running   0          25s
@@ -1017,7 +1025,9 @@ Step 4 - Deploy application on OpenShift
   service/refer-friends    ClusterIP   172.30.177.166   <none>        80/TCP    18s
 
 
-
+**4.2 Install NGINX Web Server**
+--------------------------------
+NGINX Web Server will be use to simulate application resiliency and failover from OCP cluster to OCP cluster.
 
 
 **4.2 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)**
