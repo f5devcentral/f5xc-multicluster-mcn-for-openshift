@@ -623,8 +623,8 @@ Repeat similar registration for ocp-sg and ocp-hk site.
 
 .. figure:: ./images/ocp-sites.png
 
-**Cloud Mesh Pod - OpenShift Environment**
--------------------------------------------
+**Cloud Mesh Pod with OpenShift Environment**
+---------------------------------------------
 
 **ocp-au**
 
@@ -917,6 +917,7 @@ Create/Export kubeconfig file
 
 **3.3 Setup service discovery of Mesh Node to OCP**
 ---------------------------------------------------
+For the purpose of this guideline/demo, service discovery of ocp-au from Cloud Mesh Node being configured.
 
 .. figure:: ./images/ocp-sd01.png
 
@@ -930,6 +931,10 @@ Create/Export kubeconfig file
 .. figure:: ./images/ocp-sd04.png
 
 .. figure:: ./images/ocp-sd05.png
+
+**Cloud Mesh Node with OpenShift Environment**
+-----------------------------------------------
+
 
 
 Step 4 - Deploy application on OpenShift
