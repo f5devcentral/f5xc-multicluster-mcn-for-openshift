@@ -744,21 +744,27 @@ Here are all my OCP env.
 Step 3 - Deploy Cloud Mesh Node
 ####################################
 3.1 Deploy Cloud Mesh Node.
+
 Depends on type of Cloud Mesh Node type (VMware, KVM or Cloud Site), please refer official documentation to spin up a Cloud Mesh node. This guide assume that you already has a running Cloud Mesh Node. This guide written based on a VMWare Cloud Node site.
 
 VMWare Site
+
 https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
 
 KVM Site
+
 https://docs.cloud.f5.com/docs/how-to/site-management/create-kvm-libvirt-site
 
 AWS Site
+
 https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
 
 Azure Site
+
 https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
 
 GCP Site
+
 https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
 3.2 Setup service discovery of Mesh Node to OCP
