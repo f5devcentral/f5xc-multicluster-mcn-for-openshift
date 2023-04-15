@@ -3,6 +3,8 @@
 Multi-Cluster, Multi-Cloud Networking for Kubernetes - OpenShift
 ================================================================
 
+.. figure:: ./images/demo-env.png
+
 .. contents:: Table of Contents
 
 Objective
@@ -21,6 +23,9 @@ Objective
 
 
 **Step 4 - Deploy application on OpenShift**
+
+
+.. figure:: ./images/mesh-fabric.png
 
 
 
