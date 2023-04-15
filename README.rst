@@ -11,9 +11,7 @@ Objective
 ################################
 
 
-
 **Steps 1 - OCP Environment**
-
 
 **Step 2 - Deploy Cloud Mesh Pod**
 
@@ -31,7 +29,7 @@ Objective
 
 Step 1 - OCP Environment
 ################################
-1.1  Deploy/Ensure OpenShift Cluster and Ready
+**1.1  Deploy/Ensure OpenShift Cluster and Ready**
 
 Building an OCP cluster is beyond the scope of this guide. Please refer to RedHat official documentation. Hence, assumption that you already have an existing OCP up and running. With minor changes, this instruction can be use for non-OCP – EKS, AKS and GKE.
 
@@ -57,7 +55,7 @@ Example of my OCP Environment used in this guide.
     NAME                     STATUS   ROLES           AGE    VERSION
     ocp-hk.ocp.edgecnf.com   Ready    master,worker   159d   v1.22.8+9e95cb9
 
-1.2 Enable/Ensure kernel hugepages available and sufficient.
+**1.2 Enable/Ensure kernel hugepages available and sufficient.**
 
 Note: Only the ocp-au cluster will be shown. Repeat similar task for ocp-sg and ocp-hk
 
@@ -745,25 +743,30 @@ Step 3 - Deploy Cloud Mesh Node
 ####################################
 3.1 Deploy Cloud Mesh Node.
 
-Depends on type of Cloud Mesh Node type (VMware, KVM or Cloud Site), please refer official documentation to spin up a Cloud Mesh node. This guide assume that you already has a running Cloud Mesh Node. This guide written based on a VMWare Cloud Node site.
+Depends on the type of Cloud Mesh Node (VMware, KVM or Cloud Site), please refer official documentation to spin up a Cloud Mesh node. This guide assume that you already has a running Cloud Mesh Node. This guide written based on a VMWare Cloud Node site - Secure Mesh Site.
 
-VMWare Site
+
+**Secure Mesh Site**
+
+https://docs.cloud.f5.com/docs/how-to/site-management/create-secure-mesh-site
+
+**VMWare Site**
 
 https://docs.cloud.f5.com/docs/how-to/site-management/create-vmw-site
 
-KVM Site
+**KVM Site**
 
 https://docs.cloud.f5.com/docs/how-to/site-management/create-kvm-libvirt-site
 
-AWS Site
+**AWS Site**
 
 https://docs.cloud.f5.com/docs/how-to/site-management/create-aws-site
 
-Azure Site
+**Azure Site**
 
 https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
 
-GCP Site
+**GCP Site**
 
 https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
