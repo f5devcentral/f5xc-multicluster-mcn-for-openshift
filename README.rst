@@ -179,7 +179,7 @@ Reboot worker nodes - if neccessary and validate hugepages
 Do not continue until you have hugepages configured. Example above shown that I had hugepage configured.
 
 
-1.3 Ensure StorageClass configured and Persistent Volume (PVC) working.
+**1.3 Ensure StorageClass configured and Persistent Volume (PVC) working.**
 
 Deployment of CE site on K8S require persistent volume (PV). If you don’t have pv configured, here an example to deploy a NFS provisioner for OCP.
 
@@ -271,7 +271,7 @@ Example output
 Step 2 - Deploy Cloud Mesh Pod
 ################################
 
-2.1  Download ce_k8s.yaml manifest.
+**2.1  Download ce_k8s.yaml manifest.**
 
 Download CE on K8S site manifest. Manifest can e downloaded ad https://gitlab.com/volterra.io/volterra-ce
 
@@ -291,7 +291,7 @@ Download CE on K8S site manifest. Manifest can e downloaded ad https://gitlab.co
   2022-10-26 06:24:28 (94.9 MB/s) - ‘ce_k8s.yml’ saved [6539/6539]
 
 
-2.2 Update ce_k8s.yaml deployment according to your env.
+**2.2 Update ce_k8s.yaml deployment according to your env.**
 
 Depend on your environment, updates appropriately.
 
@@ -361,7 +361,7 @@ Uncomment Service definition to enable nodeport for site to site access (e.g. si
       statefulset.kubernetes.io/pod-name: ver-2
 
 
-2.3 Apply ce_k8s.yaml deployment.
+**2.3 Apply ce_k8s.yaml deployment.**
 
 ::
 
@@ -408,7 +408,7 @@ Uncomment Service definition to enable nodeport for site to site access (e.g. si
   persistentvolumeclaim/varvpm-vp-manager-2   Bound    pvc-de41afd2-f09f-4fc3-a0bd-fa8bc77c37ff   1Gi          RWO            managed-nfs    118s
 
 
-2.4 Approve registration of VER on F5 XC Console
+**2.4 Approve registration of VER on F5 XC Console**
 
 .. figure:: ./images/approve-reg.png
 
@@ -436,7 +436,7 @@ Example running F5 XC Cloud mesh pod on OCP
   vp-manager-1                  1/1     Running   1 (13h ago)   13h
   vp-manager-2                  1/1     Running   2 (13h ago)   13h
 
-2.5 Create ver-dns service
+**2.5 Create ver-dns service**
 
 This is to ensure that ver-dns service has a static ClusterIP. During software updates, ver-0, ver-1 and ver-2 will be restarted and ver pods IP may change. 
 
@@ -482,7 +482,9 @@ dns-ver-svc.yaml
   ver-dns   ClusterIP   172.30.5.75   <none>        53/UDP,53/TCP   143d
 
 
-2.6 Update OCP DNS Operator to delegate domain to ver-dns
+**2.6 Update OCP DNS Operator to delegate domain to ver-dns**
+
+Note: If you using other Kubernetes, you may need to update CoreDNS/KubeDNS or the respective Kubernetes.
 
 DNS default configmap before update with DNS Operator
 
@@ -607,11 +609,11 @@ After DNS operator updated
 
 .. figure:: ./images/ocp-dns-delegated.png
 
-Repeat registration for ocp-sg and ocp-hk
+Repeat similar registration for ocp-sg and ocp-hk site.
 
 .. figure:: ./images/ocp-sites.png
 
-Here are all my OCP env.
+Here are my working OCP env.
 
 **ocp-au**
 
@@ -741,7 +743,8 @@ Here are all my OCP env.
 
 Step 3 - Deploy Cloud Mesh Node
 ####################################
-3.1 Deploy Cloud Mesh Node.
+
+**3.1 Deploy Cloud Mesh Node.**
 
 Depends on the type of Cloud Mesh Node (VMware, KVM or Cloud Site), please refer official documentation to spin up a Cloud Mesh node. This guide assume that you already has a running Cloud Mesh Node. This guide written based on a VMWare Cloud Node site - Secure Mesh Site.
 
@@ -770,19 +773,14 @@ https://docs.cloud.f5.com/docs/how-to/site-management/create-azure-site
 
 https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
-3.2 Setup service discovery of Mesh Node to OCP
+**3.2 Create service account for Mesh node service discovery.**
 
-.. figure:: ./images/ocp-sd01.png
-
-.. figure:: ./images/ocp-sd02.png
-
-.. figure:: ./images/ocp-sd03.png
-
-
-3.3 Create service account for Mesh node service discovery.
-
+For Cloud Mesh nodes reside outside of OCP, service discovery is neccessary for Cloud Mesh Node to discover pod lifecycle. A read-only limited credential (service account) will be created to be imported into Cloud Mesh Node. 
 
 Create ClusterRole
+------------------
+
+Cluster Role only have limited privilege (e.g. Read-Only)
 
 01-xc-svc-discovery-cr.yaml
 ::
@@ -900,10 +898,16 @@ Create/Export kubeconfig file
     user:
       token: xxxx
 
+**3.3 Setup service discovery of Mesh Node to OCP**
+
+.. figure:: ./images/ocp-sd01.png
+
+.. figure:: ./images/ocp-sd02.png
+
+.. figure:: ./images/ocp-sd03.png
 
 
-
-3.4 Setup pod network routing for ovn-kubernetes.
+**3.4 Setup pod network routing for ovn-kubernetes.**
 
 .. figure:: ./images/ocp-sd04.png
 
@@ -913,7 +917,7 @@ Create/Export kubeconfig file
 Step 4 - Deploy application on OpenShift
 ###############################################
 
-4.1 Install Apps (Arcadia)
+**4.1 Install Apps (Arcadia)**
 
 .. figure:: ./images/arcadia-apps.png
 
@@ -1001,9 +1005,9 @@ Step 4 - Deploy application on OpenShift
 
 
 
-4.2 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)
+**4.2 Create HTTP LB (origin pool, advertise policy, WAF policy, API Security)**
 
-4.3 Terraform
+**4.3 Terraform**
 
-4.4 Install nginx web server.
+**4.4 Install nginx web server.**
 
