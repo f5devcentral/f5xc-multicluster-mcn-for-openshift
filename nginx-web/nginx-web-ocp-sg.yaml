@@ -1,0 +1,38 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-web
+spec:
+  selector:
+    app: nginx-web
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-web
+  labels:
+    app: nginx-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-web
+  template:
+    metadata:
+      labels:
+        app: nginx-web
+    spec:
+     containers:
+      - name: nginx-web
+        image: reg.edgecnf.com/apps/nginx-unpriv:v4.1
+        #imagePullPolicy: Always
+        env:
+        - name: VES_IO_SITENAME # Valid env VES_IO_COUNTRY, VES_IO_REGION
+          value: "ocp-sg"
+        ports:
+        - containerPort: 8080

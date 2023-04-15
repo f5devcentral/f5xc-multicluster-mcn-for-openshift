@@ -870,7 +870,7 @@ Cluster Role only have limited privilege (e.g. Read-Only)
 
 
 ::
-  
+
   fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 01-xc-svc-discovery-cr.yaml
   clusterrole.rbac.authorization.k8s.io/xc-svc-discovery-cr created
 
@@ -918,7 +918,7 @@ Create/Export kubeconfig file
 
 **3.3 Setup service discovery of Mesh Node to OCP**
 ---------------------------------------------------
-For the purpose of this guideline/demo, service discovery of ocp-au from Cloud Mesh Node being configured.
+For the purpose of this guideline/demo, service discovery on ocp-au from Cloud Mesh Node being shown.
 
 .. figure:: ./images/ocp-sd01.png
 
