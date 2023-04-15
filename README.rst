@@ -850,13 +850,11 @@ Create ClusterRole
 
 
 ::
-
   fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 01-xc-svc-discovery-cr.yaml
   clusterrole.rbac.authorization.k8s.io/xc-svc-discovery-cr created
 
 
 Create Service account
-
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
@@ -865,7 +863,6 @@ Create Service account
   
 
 Create/Export kubeconfig file
-
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ ./03-export-sa.sh
