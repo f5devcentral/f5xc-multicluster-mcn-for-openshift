@@ -876,6 +876,7 @@ Cluster Role only have limited privilege (e.g. Read-Only)
 
 Create Service account
 ~~~~~~~~~~~~~~~~~~~~~~
+
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
@@ -885,6 +886,7 @@ Create Service account
 
 Create/Export kubeconfig file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ::
 
   fbchan@forest:~/ocp-au/xc-svc-discovery$ ./03-export-sa.sh
