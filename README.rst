@@ -911,11 +911,13 @@ Create/Export kubeconfig file
 ---------------------------------------------------
 For the purpose of this guideline/demo, service discovery on ocp-au from Cloud Mesh Node being shown.
 
-.. figure:: ./images/ocp-sd01.png
+.. figure:: ./images/aumesh-sd1.png
 
-.. figure:: ./images/ocp-sd02.png
+.. figure:: ./images/aumesh-sd2.png
 
-.. figure:: ./images/ocp-sd03.png
+.. figure:: ./images/aumesh-sd3.png
+
+.. figure:: ./images/aumesh-sd4.png
 
 
 **3.4 Setup pod network routing for ovn-kubernetes.**
