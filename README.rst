@@ -780,103 +780,117 @@ https://docs.cloud.f5.com/docs/how-to/site-management/create-gcp-site
 
 For Cloud Mesh nodes reside outside of OCP, service discovery is neccessary for Cloud Mesh Node to discover pod lifecycle. A read-only limited credential (service account) will be created to be imported into Cloud Mesh Node. 
 
-Create ClusterRole
-~~~~~~~~~~~~~~~~~~
+My colleague written a great detail article to create a service account. Here the link to the article. https://community.f5.com/t5/technical-articles/using-a-kubernetes-serviceaccount-for-service-discovery-with-f5/ta-p/300225
+
+Below instructions copied from the original article.
+
+Create Service Account and Secret
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create ServiceAccount and Secret and get the auth token (you can copy and paste)
+
+::
+
+    NAMESPACE='default'
+    SA_NAME='xc-sa'
+    SECRET_NAME='xc-sa-secret'
+    kubectl create sa $SA_NAME -n $NAMESPACE
+    kubectl apply -f - <<EOF
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: $SECRET_NAME
+      namespace: $NAMESPACE
+      annotations:
+        kubernetes.io/service-account.name: $SA_NAME
+    type: kubernetes.io/service-account-token
+    EOF
+    ##Now that we've created a ServiceAccount with a token to     authenticate, let's collect the details of this auth token, along     with our existing cluster details.
+    CA_CRT=$(kubectl --namespace $NAMESPACE get secret/$SECRET_NAME     -o json | jq -r '.data["ca.crt"]')
+    TOKEN=$(kubectl get secret/$SECRET_NAME -n $NAMESPACE -o json |     jq -r .data.token | base64 --decode )
+    SERVER=$(kubectl config view -o json | jq -r .clusters[0].cluster.    server)
+    CLUSTER_NAME=$(kubectl config view -o json | jq -r .clusters[0].    name)
+
+::
+
+
+Create Cluster Role and Role Binding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Cluster Role only have limited privilege (e.g. Read-Only)
 
-01-xc-svc-discovery-cr.yaml
 ::
 
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    name: xc-svc-discovery-cr
-  rules:
-  - apiGroups: [""]
-    resources:
-    - services
-    - endpoints
-    - pods
-    - nodes
-    - nodes/proxy
-    - namespaces
-    verbs: ["get", "list", "watch"]
-
+    CLUSTER_ROLE_NAME='xc-service-discovery'
+    cat << EOF > cluster-role.yaml
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: $CLUSTER_ROLE_NAME
+    rules:
+    - apiGroups: [""]
+      resources:
+      - services
+      - endpoints
+      - pods
+      - nodes
+      - nodes/proxy
+      - namespaces
+      verbs: ["get", "list", "watch"]
+    EOF
+    kubectl apply -f cluster-role.yaml  
 
 ::
 
-  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 01-xc-svc-discovery-cr.yaml
-  clusterrole.rbac.authorization.k8s.io/xc-svc-discovery-cr created
-
-
-Create Service account
-~~~~~~~~~~~~~~~~~~~~~~
-
-02-xc-svc-discovery-sa.yaml
+Create Cluster Role Binding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
 
-  apiVersion: v1
-  kind: ServiceAccount
-  metadata:
-    name: xc-svc-discovery-sa
-    namespace: default
-  ---
+  cat <<EOF > cluster-role-binding.yaml
   apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:
-    name: xc-svc-discovery-crb
+    name: $CLUSTER_ROLE_NAME
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
-    name: xc-svc-discovery-cr
+    name: $CLUSTER_ROLE_NAME
   subjects:
   - kind: ServiceAccount
-    name: xc-svc-discovery-sa
-    namespace: default
-
+    name: $SA_NAME
+    namespace: $NAMESPACE
+  EOF
+  kubectl apply -f cluster-role-binding.yaml
 
 ::
-
-  fbchan@forest:~/ocp-au/xc-svc-discovery$ oc apply -f 02-xc-svc-discovery-sa.yaml
-  serviceaccount/xc-svc-discovery-sa created
-  clusterrolebinding.rbac.authorization.k8s.io/xc-svc-discovery-crb created
-  
 
 Create/Export kubeconfig file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+sa.kubeconfig
 
-03-export-sa.sh
 ::
 
-  export USER_TOKEN_NAME=$(kubectl -n default get serviceaccount xc-svc-discovery-sa -o=jsonpath='{.secrets[0].name}')
-  export USER_TOKEN_VALUE=$(kubectl -n default get secret/${USER_TOKEN_NAME} -o=go-template='{{.data.token}}' | base64 --decode)
-  export CURRENT_CONTEXT=$(kubectl config current-context)
-  export CURRENT_CLUSTER=$(kubectl config view --raw -o=go-template='{{range .contexts}}{{if eq .name "'''${CURRENT_CONTEXT}'''"}}{{ index .context "cluster" }}{{end}}{{end}}')
-  export CLUSTER_CA=$(kubectl config view --raw -o=go-template='{{range .clusters}}{{if eq .name "'''${CURRENT_CLUSTER}'''"}}"{{with index .cluster "certificate-authority-data" }}{{.}}{{end}}"{{ end }}{{ end }}')
-  export CLUSTER_SERVER=$(kubectl config view --raw -o=go-template='{{range .clusters}}{{if eq .name "'''${CURRENT_CLUSTER}'''"}}{{ .cluster.server }}{{end}}{{ end }}')
-  
-  cat << EOF > xc-svc-discovery-sa-default-kubeconfig
-  apiVersion: v1
-  kind: Config
-  current-context: ${CURRENT_CONTEXT}
-  contexts:
-  - name: ${CURRENT_CONTEXT}
-    context:
-      cluster: ${CURRENT_CONTEXT}
-      user: foobang.chan@f5.com
-      namespace: default
-  clusters:
-  - name: ${CURRENT_CONTEXT}
-    cluster:
-      certificate-authority-data: ${CLUSTER_CA}
-      server: ${CLUSTER_SERVER}
-  users:
-  - name: foobang.chan@f5.com
-    user:
-      token: ${USER_TOKEN_VALUE}
-  EOF
+   cat <<EOF > sa.kubeconfig
+   ---
+   apiVersion: v1
+   kind: Config
+   clusters:
+   - name: $CLUSTER_NAME
+     cluster:
+       certificate-authority-data: $CA_CRT  
+       server: $SERVER
+   contexts:
+   - name: $SA_NAME-$CLUSTER_NAME
+     context:
+       cluster: $CLUSTER_NAME
+       user: $SA_NAME
+   users:
+   - name: $SA_NAME
+     user:
+       token: $TOKEN
+   current-context: $SA_NAME-$CLUSTER_NAME
+   EOF
 
 
 ::
