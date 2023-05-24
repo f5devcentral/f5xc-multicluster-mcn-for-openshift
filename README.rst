@@ -791,25 +791,25 @@ Create ServiceAccount and Secret and get the auth token (you can copy and paste)
 
 ::
 
-    NAMESPACE='default'
-    SA_NAME='xc-sa'
-    SECRET_NAME='xc-sa-secret'
-    kubectl create sa $SA_NAME -n $NAMESPACE
-    kubectl apply -f - <<EOF
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: $SECRET_NAME
-      namespace: $NAMESPACE
-      annotations:
-        kubernetes.io/service-account.name: $SA_NAME
-    type: kubernetes.io/service-account-token
-    EOF
-    ##Now that we've created a ServiceAccount with a token to     authenticate, let's collect the details of this auth token, along     with our existing cluster details.
-    CA_CRT=$(kubectl --namespace $NAMESPACE get secret/$SECRET_NAME     -o json | jq -r '.data["ca.crt"]')
-    TOKEN=$(kubectl get secret/$SECRET_NAME -n $NAMESPACE -o json |     jq -r .data.token | base64 --decode )
-    SERVER=$(kubectl config view -o json | jq -r .clusters[0].cluster.    server)
-    CLUSTER_NAME=$(kubectl config view -o json | jq -r .clusters[0].    name)
+   NAMESPACE='default'
+   SA_NAME='xc-sa'
+   SECRET_NAME='xc-sa-secret'
+   kubectl create sa $SA_NAME -n $NAMESPACE
+   kubectl apply -f - <<EOF
+   apiVersion: v1
+   kind: Secret
+   metadata:
+     name: $SECRET_NAME
+     namespace: $NAMESPACE
+     annotations:
+       kubernetes.io/service-account.name: $SA_NAME
+   type: kubernetes.io/service-account-token
+   EOF
+   ##Now that we've created a ServiceAccount with a token to authenticate, let's collect the details of this auth token, along with our existing    cluster details.
+   CA_CRT=$(kubectl --namespace $NAMESPACE get secret/$SECRET_NAME -o json | jq -r '.data["ca.crt"]')
+   TOKEN=$(kubectl get secret/$SECRET_NAME -n $NAMESPACE -o json | jq -r .data.token | base64 --decode )
+   SERVER=$(kubectl config view -o json | jq -r .clusters[0].cluster.server)
+   CLUSTER_NAME=$(kubectl config view -o json | jq -r .clusters[0].name)
 
 ::
 
