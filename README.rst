@@ -811,8 +811,6 @@ Create ServiceAccount and Secret and get the auth token (you can copy and paste)
    SERVER=$(kubectl config view -o json | jq -r .clusters[0].cluster.server)
    CLUSTER_NAME=$(kubectl config view -o json | jq -r .clusters[0].name)
 
-::
-
 .. figure:: ./images/sd1.png
 
 Create Cluster Role and Role Binding
@@ -841,8 +839,6 @@ Cluster Role only have limited privilege (e.g. Read-Only)
     EOF
     kubectl apply -f cluster-role.yaml  
 
-::
-
 .. figure:: ./images/sd2.png
 
 Create Cluster Role Binding
@@ -864,8 +860,6 @@ Create Cluster Role Binding
     namespace: $NAMESPACE
   EOF
   kubectl apply -f cluster-role-binding.yaml
-
-::
 
 .. figure:: ./images/sd3.png
 
@@ -896,8 +890,6 @@ sa.kubeconfig
        token: $TOKEN
    current-context: $SA_NAME-$CLUSTER_NAME
    EOF
-
-::
 
 .. figure:: ./images/sd4.png
 
