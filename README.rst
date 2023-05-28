@@ -896,7 +896,7 @@ sa.kubeconfig
 
 **3.3 Setup service discovery of Mesh Node to OCP**
 ---------------------------------------------------
-For the purpose of this guideline/demo, service discovery on ocp-au from Cloud Mesh Node being shown.
+For the purpose of this guideline/demo, only service discovery on ocp-au from Cloud Mesh Node being shown.
 
 .. figure:: ./images/aumesh-sd1.png
 
@@ -912,6 +912,35 @@ For the purpose of this guideline/demo, service discovery on ocp-au from Cloud M
 .. figure:: ./images/ocp-sd04.png
 
 .. figure:: ./images/ocp-sd05.png
+
+3.4 Setup Static route to OCP Networking
+-----------------------------------------
+To ensure Cloud Mesh node able to send to OCP pod networks, static route can be set on Mesh node to send to OCP node primary IP address
+
+::
+  fbchan@forest:~/ocp-au$ oc -n openshift-ovn-kubernetes logs -f ovnkube-node-7242r ovnkube-node | grep "gateway_mode_flags"
+  + gateway_mode_flags='--gateway-mode shared --gateway-interface br-ex'
+
+::
+  fbchan@forest:~/ocp-au$ oc get node
+  NAME                      STATUS   ROLES                     AGE   VERSION
+  ocp-au1.ocp.edgecnf.com   Ready    master,worker,worker-hp   63d   v1.22.8+9e95cb9
+  ocp-au2.ocp.edgecnf.com   Ready    master,worker,worker-hp   63d   v1.22.8+9e95cb9
+  ocp-au3.ocp.edgecnf.com   Ready    master,worker,worker-hp   63d   v1.22.8+9e95cb9
+
+::
+  fbchan@forest:~/ocp-au$ oc describe node ocp-au1.ocp.edgecnf.com | grep "node-subnets\|node-primary-ifaddr"
+                    k8s.ovn.org/node-primary-ifaddr: {"ipv4":"10.176.15.51/24"}
+                    k8s.ovn.org/node-subnets: {"default":"10.130.0.0/23"}
+  
+  fbchan@forest:~/ocp-au$ oc describe node ocp-au2.ocp.edgecnf.com | grep "node-subnets\|node-primary-ifaddr"
+                    k8s.ovn.org/node-primary-ifaddr: {"ipv4":"10.176.15.52/24"}
+                    k8s.ovn.org/node-subnets: {"default":"10.128.0.0/23"}
+  
+  fbchan@forest:~/ocp-au$ oc describe node ocp-au3.ocp.edgecnf.com | grep "node-subnets\|node-primary-ifaddr"
+                    k8s.ovn.org/node-primary-ifaddr: {"ipv4":"10.176.15.53/24"}
+                    k8s.ovn.org/node-subnets: {"default":"10.129.0.0/23"}
+
 
 **Cloud Mesh Node with OpenShift Environment**
 -----------------------------------------------
