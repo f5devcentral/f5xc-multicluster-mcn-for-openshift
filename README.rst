@@ -906,15 +906,17 @@ For the purpose of this guideline/demo, only service discovery on ocp-au from Cl
 
 .. figure:: ./images/aumesh-sd4.png
 
-**3.4 Setup pod network static route to OCP Networking (OVN-Kubernetes)**
--------------------------------------------------------------------------
-To ensure Cloud Mesh node able to send to OCP pod networks, static route can be set on Mesh node to send to OCP node primary IP address
+**3.4 Setup static route to OCP pods network (OVN-Kubernetes)**
+---------------------------------------------------------------
+To ensure Cloud Mesh node able to route directly to OCP pod networks, static route will be configured on Mesh node to send to OCP node primary IP address
 
 ::
+
   fbchan@forest:~/ocp-au$ oc -n openshift-ovn-kubernetes logs -f ovnkube-node-7242r ovnkube-node | grep "gateway_mode_flags"
   + gateway_mode_flags='--gateway-mode shared --gateway-interface br-ex'
 
 ::
+
   fbchan@forest:~/ocp-au$ oc get node
   NAME                      STATUS   ROLES                     AGE   VERSION
   ocp-au1.ocp.edgecnf.com   Ready    master,worker,worker-hp   63d   v1.22.8+9e95cb9
@@ -922,6 +924,7 @@ To ensure Cloud Mesh node able to send to OCP pod networks, static route can be 
   ocp-au3.ocp.edgecnf.com   Ready    master,worker,worker-hp   63d   v1.22.8+9e95cb9
 
 ::
+  
   fbchan@forest:~/ocp-au$ oc describe node ocp-au1.ocp.edgecnf.com | grep "node-subnets\|node-primary-ifaddr"
                     k8s.ovn.org/node-primary-ifaddr: {"ipv4":"10.176.15.51/24"}
                     k8s.ovn.org/node-subnets: {"default":"10.130.0.0/23"}
