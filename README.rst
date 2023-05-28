@@ -813,6 +813,7 @@ Create ServiceAccount and Secret and get the auth token (you can copy and paste)
 
 ::
 
+.. figure:: ./images/sd1.png
 
 Create Cluster Role and Role Binding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -842,6 +843,8 @@ Cluster Role only have limited privilege (e.g. Read-Only)
 
 ::
 
+.. figure:: ./images/sd2.png
+
 Create Cluster Role Binding
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ::
@@ -863,6 +866,8 @@ Create Cluster Role Binding
   kubectl apply -f cluster-role-binding.yaml
 
 ::
+
+.. figure:: ./images/sd3.png
 
 Create/Export kubeconfig file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -892,34 +897,10 @@ sa.kubeconfig
    current-context: $SA_NAME-$CLUSTER_NAME
    EOF
 
-
 ::
 
-  fbchan@forest:~/ocp-au/xc-svc-discovery$ ./03-export-sa.sh
-  fbchan@forest:~/ocp-au/xc-svc-discovery$ ls
-  01-xc-svc-discovery-cr.yaml  02-xc-svc-discovery-sa.yaml  03-export-sa.sh  xc-svc-discovery-sa-default-kubeconfig
-  fbchan@forest:~/ocp-au/xc-svc-discovery$
-  
-  
-  fbchan@forest:~/ocp-au/xc-svc-discovery$ cat xc-svc-discovery-sa-default-kubeconfig
-  apiVersion: v1
-  kind: Config
-  current-context: admin
-  contexts:
-  - name: admin
-    context:
-      cluster: admin
-      user: foobang.chan@f5.com
-      namespace: default
-  clusters:
-  - name: admin
-    cluster:
-      certificate-authority-data: "LS0xxx="
-      server: https://api.ocp-au.ocp.edgecnf.com:6443
-  users:
-  - name: foobang.chan@f5.com
-    user:
-      token: xxxx
+.. figure:: ./images/sd4.png
+
 
 **3.3 Setup service discovery of Mesh Node to OCP**
 ---------------------------------------------------
