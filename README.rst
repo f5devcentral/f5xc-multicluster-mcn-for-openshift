@@ -939,8 +939,6 @@ To ensure Cloud Mesh node able to route directly to OCP pod networks, static rou
 
 .. figure:: ./images/ocp-sd04.png
 
-.. figure:: ./images/ocp-sd05.png
-
 
 **Cloud Mesh Node with OpenShift Environment**
 -----------------------------------------------
