@@ -898,13 +898,13 @@ sa.kubeconfig
 ---------------------------------------------------
 For the purpose of this guideline/demo, only service discovery on ocp-au from Cloud Mesh Node being shown.
 
-.. figure:: ./images/aumesh-sd1.png
+.. figure:: ./images/sydmesh-sd1.png
 
-.. figure:: ./images/aumesh-sd2.png
+.. figure:: ./images/sydmesh-sd2.png
 
-.. figure:: ./images/aumesh-sd3.png
+.. figure:: ./images/sydmesh-sd3.png
 
-.. figure:: ./images/aumesh-sd4.png
+.. figure:: ./images/sydmesh-sd4.png
 
 **3.4 Setup static route to OCP pods network (OVN-Kubernetes)**
 ---------------------------------------------------------------
@@ -924,7 +924,7 @@ To ensure Cloud Mesh node able to route directly to OCP pod networks, static rou
   ocp-au3.ocp.edgecnf.com   Ready    master,worker,worker-hp   63d   v1.22.8+9e95cb9
 
 ::
-  
+
   fbchan@forest:~/ocp-au$ oc describe node ocp-au1.ocp.edgecnf.com | grep "node-subnets\|node-primary-ifaddr"
                     k8s.ovn.org/node-primary-ifaddr: {"ipv4":"10.176.15.51/24"}
                     k8s.ovn.org/node-subnets: {"default":"10.130.0.0/23"}
