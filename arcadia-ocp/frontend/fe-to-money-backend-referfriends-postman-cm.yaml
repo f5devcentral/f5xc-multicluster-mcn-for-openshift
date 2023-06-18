@@ -7,14 +7,14 @@ data:
         {
         	"info": {
         		"_postman_id": "f5922548-c3a6-46e5-b581-d0c14fbe0e24",
-        		"name": "Arcadia-Money-FE-Backend-ReferFriends-attack-auth",
+        		"name": "Arcadia-Money-FE-BE-RF-attack-auth",
         		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         		"_exporter_id": "142705",
         		"_collection_link": "https://speeding-comet-389687.postman.co/workspace/My-Volterra~585ca1b8-0533-4119-9eb1-1a74e5d87c4b/collection/142705-f5922548-c3a6-46e5-b581-d0c14fbe0e24?action=share&creator=142705&source=collection_link"
         	},
         	"item": [
         		{
-        			"name": "01-all-customer Copy",
+        			"name": "GetAllCustomer",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -41,7 +41,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-customer-membership Copy",
+        			"name": "GetCustomerMemeberShip",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -68,7 +68,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-credit-rating Copy",
+        			"name": "GetCustomerCreditRating",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -95,7 +95,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-transfer Copy",
+        			"name": "GetTransferTokenById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -122,7 +122,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-transfer-account Copy",
+        			"name": "GetTransferbyAccount",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -149,7 +149,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-post-transfer Copy",
+        			"name": "PostAccountTranfer",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -180,7 +180,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-post-deposit Copy",
+        			"name": "PostAccountDeposit",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -211,7 +211,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getaccount-by Copy",
+        			"name": "GetAccountWidrawalRahul",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -240,7 +240,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getaccount-tony Copy",
+        			"name": "GetAccountWidrawalTony",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -269,7 +269,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getaccount-olivia Copy",
+        			"name": "GetAccountWidrawalOlivia",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -298,7 +298,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getaccount-paula Copy",
+        			"name": "GetAccountWidrawalPaula",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -327,7 +327,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-oidc-token Copy",
+        			"name": "PostReferFriendsOIDCToken",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -359,7 +359,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-withdraw-raghu Copy",
+        			"name": "GetAccountWidrawalRahulUSD",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -388,7 +388,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getTradingbyToken Copy 2",
+        			"name": "GetTradingTokenById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -414,7 +414,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getTradingbyToken-Auth",
+        			"name": "GetTradingTokenById-BasicAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -445,7 +445,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getStock Copy 2",
+        			"name": "GetStock",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -477,7 +477,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-placeOrder Copy 2",
+        			"name": "PostPlaceOrder",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -507,7 +507,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-moveOrder Copy 2",
+        			"name": "PostMoveOrder",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -537,7 +537,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-moveOrder Copy-jwt",
+        			"name": "PostMoveOrder-JWTAuth",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -572,7 +572,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-moveOrder Copy 2",
+        			"name": "GetMoveOrder",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -598,7 +598,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-moveOrder Copy-jwt",
+        			"name": "GetMoveOrder-JWTAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -629,7 +629,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-changeOrderStopLimit Copy 2",
+        			"name": "GetChangeOrderStopLimit",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -655,7 +655,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-changeOrderStopLimit Copy-jwt",
+        			"name": "GetChangeOrderStopLimit-JWTAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -686,7 +686,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-1 Copy 2",
+        			"name": "GetReferFriendsById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -718,7 +718,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-1 - auth",
+        			"name": "GetReferFriendsById-BasicAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -749,7 +749,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-2 Copy 2",
+        			"name": "GetReferFriendsById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -775,64 +775,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-2-auth",
-        			"request": {
-        				"method": "GET",
-        				"header": [
-        					{
-        						"key": "Content-Type",
-        						"value": "application/json",
-        						"type": "text"
-        					},
-        					{
-        						"key": "Authorization",
-        						"value": "Basic b2xpdmlhOmlsb3ZlZjU=",
-        						"type": "text"
-        					}
-        				],
-        				"url": {
-        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
-        					"protocol": "http",
-        					"host": [
-        						"{{URL1}}"
-        					],
-        					"path": [
-        						"api",
-        						"v1",
-        						"getRefFriendsById"
-        					]
-        				}
-        			},
-        			"response": []
-        		},
-        		{
-        			"name": "01-getRefFriendsById-3 Copy 2",
-        			"request": {
-        				"method": "GET",
-        				"header": [
-        					{
-        						"key": "Content-Type",
-        						"value": "application/json",
-        						"type": "text"
-        					}
-        				],
-        				"url": {
-        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
-        					"protocol": "http",
-        					"host": [
-        						"{{URL1}}"
-        					],
-        					"path": [
-        						"api",
-        						"v1",
-        						"getRefFriendsById"
-        					]
-        				}
-        			},
-        			"response": []
-        		},
-        		{
-        			"name": "01-getRefFriendsById-3-auth",
+        			"name": "GetReferFriendsById-BasicAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -863,7 +806,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-4 Copy 2",
+        			"name": "GetReferFriendsById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -889,64 +832,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-4-auth",
-        			"request": {
-        				"method": "GET",
-        				"header": [
-        					{
-        						"key": "Content-Type",
-        						"value": "application/json",
-        						"type": "text"
-        					},
-        					{
-        						"key": "Authorization",
-        						"value": "Basic b2xpdmlhOmlsb3ZlZjU=",
-        						"type": "text"
-        					}
-        				],
-        				"url": {
-        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
-        					"protocol": "http",
-        					"host": [
-        						"{{URL1}}"
-        					],
-        					"path": [
-        						"api",
-        						"v1",
-        						"getRefFriendsById"
-        					]
-        				}
-        			},
-        			"response": []
-        		},
-        		{
-        			"name": "01-getRefFriendsById-5 Copy 2",
-        			"request": {
-        				"method": "GET",
-        				"header": [
-        					{
-        						"key": "Content-Type",
-        						"value": "application/json",
-        						"type": "text"
-        					}
-        				],
-        				"url": {
-        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
-        					"protocol": "http",
-        					"host": [
-        						"{{URL1}}"
-        					],
-        					"path": [
-        						"api",
-        						"v1",
-        						"getRefFriendsById"
-        					]
-        				}
-        			},
-        			"response": []
-        		},
-        		{
-        			"name": "01-getRefFriendsById-5-auth",
+        			"name": "GetReferFriendsById-BasicAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -977,7 +863,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-6 Copy 2",
+        			"name": "GetReferFriendsById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1003,7 +889,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-6-auth",
+        			"name": "GetReferFriendsById-BasicAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1034,7 +920,121 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById Copy 2",
+        			"name": "GetReferFriendsById",
+        			"request": {
+        				"method": "GET",
+        				"header": [
+        					{
+        						"key": "Content-Type",
+        						"value": "application/json",
+        						"type": "text"
+        					}
+        				],
+        				"url": {
+        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+        					"protocol": "http",
+        					"host": [
+        						"{{URL1}}"
+        					],
+        					"path": [
+        						"api",
+        						"v1",
+        						"getRefFriendsById"
+        					]
+        				}
+        			},
+        			"response": []
+        		},
+        		{
+        			"name": "GetReferFriendsById-BasicAuth",
+        			"request": {
+        				"method": "GET",
+        				"header": [
+        					{
+        						"key": "Content-Type",
+        						"value": "application/json",
+        						"type": "text"
+        					},
+        					{
+        						"key": "Authorization",
+        						"value": "Basic b2xpdmlhOmlsb3ZlZjU=",
+        						"type": "text"
+        					}
+        				],
+        				"url": {
+        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+        					"protocol": "http",
+        					"host": [
+        						"{{URL1}}"
+        					],
+        					"path": [
+        						"api",
+        						"v1",
+        						"getRefFriendsById"
+        					]
+        				}
+        			},
+        			"response": []
+        		},
+        		{
+        			"name": "GetReferFriendsById",
+        			"request": {
+        				"method": "GET",
+        				"header": [
+        					{
+        						"key": "Content-Type",
+        						"value": "application/json",
+        						"type": "text"
+        					}
+        				],
+        				"url": {
+        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+        					"protocol": "http",
+        					"host": [
+        						"{{URL1}}"
+        					],
+        					"path": [
+        						"api",
+        						"v1",
+        						"getRefFriendsById"
+        					]
+        				}
+        			},
+        			"response": []
+        		},
+        		{
+        			"name": "GetReferFriendsById-BasicAuth",
+        			"request": {
+        				"method": "GET",
+        				"header": [
+        					{
+        						"key": "Content-Type",
+        						"value": "application/json",
+        						"type": "text"
+        					},
+        					{
+        						"key": "Authorization",
+        						"value": "Basic b2xpdmlhOmlsb3ZlZjU=",
+        						"type": "text"
+        					}
+        				],
+        				"url": {
+        					"raw": "http://{{URL1}}/api/v1/getRefFriendsById",
+        					"protocol": "http",
+        					"host": [
+        						"{{URL1}}"
+        					],
+        					"path": [
+        						"api",
+        						"v1",
+        						"getRefFriendsById"
+        					]
+        				}
+        			},
+        			"response": []
+        		},
+        		{
+        			"name": "PostGetRefFriendsById",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1064,7 +1064,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-auth",
+        			"name": "PostGetRefFriendsById-BasicAuth",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1099,7 +1099,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-addRefFriendsById Copy 2",
+        			"name": "PostGetRefFriendsById-BasicAuth",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1134,7 +1134,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-auth/refer-friends/oidc-token Copy 2",
+        			"name": "PostReferFriendsOIDCToken",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1166,7 +1166,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-auth/refer-friends/oidc-token-auth",
+        			"name": "PostReferFriendsOIDCToken-BasicAuth",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1203,7 +1203,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-auth/refer-friends/oidc-token Copy 2",
+        			"name": "GetReferFriendsOIDCToken-BasicAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1236,7 +1236,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-auth/money-transfer/2fa-token Copy 2",
+        			"name": "PostMoneyTransfer2FAToken",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1268,7 +1268,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-auth/money-transfer/2fa-token-auth",
+        			"name": "PostMoneyTransfer2FAToken-BasicAuth",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1305,7 +1305,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-orderAddresses-1 Copy 2",
+        			"name": "PostOrderAddresses",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1335,7 +1335,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-orderAddresses-2 Copy 2",
+        			"name": "PostOrderAddresses",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1365,7 +1365,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-orderAddresses-3 Copy 2",
+        			"name": "PostOrderAddresses",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1395,7 +1395,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-orderAddresses-4 Copy 2",
+        			"name": "PostOrderAddresses-attack",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1425,7 +1425,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-orderAddresses-5 Copy 2",
+        			"name": "PostOrderAddresses",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1455,7 +1455,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updatePaymentInfoById Copy 2",
+        			"name": "PutUpdatePaymentInfoByID1",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -1486,7 +1486,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updatePaymentInfoById Copy-jwt",
+        			"name": "PutUpdatePaymentInfoByID-JWTAuth",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -1522,7 +1522,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updatePaymentInfoById-5252627 Copy 2",
+        			"name": "PutUpdatePaymentInfoByID2",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -1553,7 +1553,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updatePaymentInfoById-5252627 Copy-jwt",
+        			"name": "PutUpdatePaymentInfoByID-JWTAuth",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -1589,7 +1589,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updatePaymentInfoById-7236373 Copy 2",
+        			"name": "PutUpdatePaymentInfoByID3",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -1620,7 +1620,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updatePaymentInfoById-7236373 Copy 3",
+        			"name": "PutUpdatePaymentInfoByID3-JWTAuth",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -1656,7 +1656,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-changeOrderById Copy 2",
+        			"name": "PostChangeOrderById",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1686,7 +1686,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-changeOrderById Copy-jwt",
+        			"name": "PostChangeOrderById-BasicAuth",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -1721,7 +1721,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-subscribe Copy",
+        			"name": "GetSubscribe",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1752,7 +1752,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-unsubscribe Copy",
+        			"name": "GetUnsubscribe",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1778,7 +1778,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFeesbyid Copy",
+        			"name": "GetRefFeesById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1804,7 +1804,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-referfriendsById-7872132 Copy",
+        			"name": "GetReferFriendsById1",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1837,7 +1837,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-referfriendsById-99827262 Copy",
+        			"name": "GetReferFriendsById1-JWTAuth",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -1869,7 +1869,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-referfriendsById-6253826 Copy",
+        			"name": "GetReferFriendsById2",
         			"protocolProfileBehavior": {
         				"disabledSystemHeaders": {}
         			},
@@ -1905,18 +1905,13 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-referfriendsById-PANW Copy",
+        			"name": "PutReferFriendsById-PANW",
         			"request": {
         				"method": "PUT",
         				"header": [
         					{
         						"key": "Content-Type",
         						"value": "application/json",
-        						"type": "text"
-        					},
-        					{
-        						"key": "Authorization",
-        						"value": "Token abcdef",
         						"type": "text"
         					}
         				],
@@ -1941,7 +1936,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-referfriendsById-INTC Copy",
+        			"name": "DeleteReferFriendsById",
         			"request": {
         				"method": "DELETE",
         				"header": [
@@ -1977,7 +1972,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-1 Copy",
+        			"name": "GetRefFriendsById1",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -2009,7 +2004,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-2 Copy",
+        			"name": "GetRefFriendsById2",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -2041,7 +2036,85 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-3 Copy",
+        			"name": "GetRefFriendsById3",
+        			"request": {
+        				"method": "GET",
+        				"header": [
+        					{
+        						"key": "Content-Type",
+        						"value": "application/json",
+        						"type": "text"
+        					}
+        				],
+        				"url": {
+        					"raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+        					"protocol": "http",
+        					"host": [
+        						"{{URL3}}"
+        					],
+        					"path": [
+        						"api",
+        						"v1",
+        						"getRefFriendsById"
+        					]
+        				}
+        			},
+        			"response": []
+        		},
+        		{
+        			"name": "GetRefFriendsById4",
+        			"request": {
+        				"method": "GET",
+        				"header": [
+        					{
+        						"key": "Content-Type",
+        						"value": "application/json",
+        						"type": "text"
+        					}
+        				],
+        				"url": {
+        					"raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+        					"protocol": "http",
+        					"host": [
+        						"{{URL3}}"
+        					],
+        					"path": [
+        						"api",
+        						"v1",
+        						"getRefFriendsById"
+        					]
+        				}
+        			},
+        			"response": []
+        		},
+        		{
+        			"name": "GetRefFriendsById5",
+        			"request": {
+        				"method": "GET",
+        				"header": [
+        					{
+        						"key": "Content-Type",
+        						"value": "application/json",
+        						"type": "text"
+        					}
+        				],
+        				"url": {
+        					"raw": "http://{{URL3}}/api/v1/getRefFriendsById",
+        					"protocol": "http",
+        					"host": [
+        						"{{URL3}}"
+        					],
+        					"path": [
+        						"api",
+        						"v1",
+        						"getRefFriendsById"
+        					]
+        				}
+        			},
+        			"response": []
+        		},
+        		{
+        			"name": "GetRefFriendsById",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -2073,103 +2146,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById-4 Copy",
-        			"request": {
-        				"method": "GET",
-        				"header": [
-        					{
-        						"key": "Content-Type",
-        						"value": "application/json",
-        						"type": "text"
-        					},
-        					{
-        						"key": "Authorization",
-        						"value": "Token abcdef",
-        						"type": "text",
-        						"disabled": true
-        					}
-        				],
-        				"url": {
-        					"raw": "http://{{URL3}}/api/v1/getRefFriendsById",
-        					"protocol": "http",
-        					"host": [
-        						"{{URL3}}"
-        					],
-        					"path": [
-        						"api",
-        						"v1",
-        						"getRefFriendsById"
-        					]
-        				}
-        			},
-        			"response": []
-        		},
-        		{
-        			"name": "01-getRefFriendsById-5 Copy",
-        			"request": {
-        				"method": "GET",
-        				"header": [
-        					{
-        						"key": "Content-Type",
-        						"value": "application/json",
-        						"type": "text"
-        					},
-        					{
-        						"key": "Authorization",
-        						"value": "Token abcdef",
-        						"type": "text",
-        						"disabled": true
-        					}
-        				],
-        				"url": {
-        					"raw": "http://{{URL3}}/api/v1/getRefFriendsById",
-        					"protocol": "http",
-        					"host": [
-        						"{{URL3}}"
-        					],
-        					"path": [
-        						"api",
-        						"v1",
-        						"getRefFriendsById"
-        					]
-        				}
-        			},
-        			"response": []
-        		},
-        		{
-        			"name": "01-getRefFriendsById-6 Copy",
-        			"request": {
-        				"method": "GET",
-        				"header": [
-        					{
-        						"key": "Content-Type",
-        						"value": "application/json",
-        						"type": "text"
-        					},
-        					{
-        						"key": "Authorization",
-        						"value": "Token abcdef",
-        						"type": "text",
-        						"disabled": true
-        					}
-        				],
-        				"url": {
-        					"raw": "http://{{URL3}}/api/v1/getRefFriendsById",
-        					"protocol": "http",
-        					"host": [
-        						"{{URL3}}"
-        					],
-        					"path": [
-        						"api",
-        						"v1",
-        						"getRefFriendsById"
-        					]
-        				}
-        			},
-        			"response": []
-        		},
-        		{
-        			"name": "01-getRefFriendsById Copy",
+        			"name": "PostRefFriendsById-JWTAuth",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -2204,7 +2181,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-addRefFriendsById Copy",
+        			"name": "PostRefFriendsById",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -2234,7 +2211,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-auth/refer-friends/oidc-token Copy",
+        			"name": "PostReferFriendsOIDCToken-AuthToken",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -2271,7 +2248,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-getRefFriendsById Copy",
+        			"name": "GetRefFriendsById-AuthToken",
         			"request": {
         				"method": "GET",
         				"header": [
@@ -2283,8 +2260,7 @@ data:
         					{
         						"key": "Authorization",
         						"value": "Token abcdef",
-        						"type": "text",
-        						"disabled": true
+        						"type": "text"
         					}
         				],
         				"url": {
@@ -2303,7 +2279,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updateemailById Copy",
+        			"name": "PutUpdateEmailById-AuthToken",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -2339,7 +2315,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updateemailById-5252627 Copy",
+        			"name": "PutUpdateEmailById-JWTAuth",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -2375,7 +2351,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-updateemailById-7236373 Copy",
+        			"name": "PutUpdateEmailById-AuthToken",
         			"request": {
         				"method": "PUT",
         				"header": [
@@ -2411,7 +2387,7 @@ data:
         			"response": []
         		},
         		{
-        			"name": "01-changeemailById Copy",
+        			"name": "PostChangeEmailById",
         			"request": {
         				"method": "POST",
         				"header": [
@@ -2419,12 +2395,6 @@ data:
         						"key": "Content-Type",
         						"value": "application/json",
         						"type": "text"
-        					},
-        					{
-        						"key": "Authorization",
-        						"value": "Token abcdef",
-        						"type": "text",
-        						"disabled": true
         					}
         				],
         				"body": {
