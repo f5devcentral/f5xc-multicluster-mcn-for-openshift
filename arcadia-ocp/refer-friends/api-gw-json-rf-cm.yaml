@@ -2,8 +2,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: api-gw-rf.json
-  annotations:
-    ves.io/sites: ves-io-system/hk2-hkg
 data:
   api-gw.json: |
     {

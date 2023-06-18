@@ -5,7 +5,6 @@ metadata:
   annotations:
     ves.io/proxy-type: HTTP_PROXY
     ves.io/app_type: arcadia-ocp
-    ves.io/sites: ves-io-system/hk2-hkg
   labels:
     app: refer-friends
     service: refer-friends

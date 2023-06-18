@@ -2,9 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: run-apigen-fe.sh
-  annotations:
-    ves.io/sites: ves-io-system/me1-mel
 data:
   run-apigw-loadgen.sh: |
     #!/bin/sh
-    while true; do /usr/local/bin/newman run /tmp/fe-to-money-backend-referfriends-postman.json -n 30 --delay-request 500 --silent; sleep 600;done
+    while true; do /usr/local/bin/newman run /tmp/fe-to-money-backend-referfriends-postman.json -n 30 --delay-request 500; sleep 600;done

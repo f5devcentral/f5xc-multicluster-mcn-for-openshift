@@ -2,43 +2,25 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: sc-nginx-default-conf-9090-fe-cm
-  annotations:
-    ves.io/sites: ves-io-system/me1-mel
 data:
   default.conf: |
+
+    map $http_api_key $api_client_name {
+       default       "";
+        "JAWex+W9oHGzu8r/ISVLWUgL"  "client_one";
+       "C+krNtqBtgefj9Pa1X5xeqht"  "client_two";
+       "FIIl5UAvqwi/i6U51W674qVj"  "client_three";
+       "dhK2mnQyx5IToMlEO8IX4C0x"  "client_four";
+       "gYcnerSVsipvMuMJBSYV3eSP"  "client_five";
+    }
+
     server {
     listen       9090;
-    #server_name  localhost;
-
-    #charset koi8-r;
-    #access_log  /var/log/nginx/host.access.log  main;
-
-    #location / {
-    #    root   /usr/share/nginx/html;
-    #    index  index.html index.htm;
-    #}
-
-    location = /ati_tel {
-            proxy_pass   https://us.bas.zeronaught.com;
-            proxy_ssl_server_name on;
-    }
-
-    location /__imp_apg__/ {
-            proxy_pass https://dip.zeronaught.com;
-    }
-
 
     location / {
-        # DeviceID JS
-        js_header_filter apg.ati_tel;
-        #subs_filter_types text/html application/xhtml;
-        sub_filter '</head>' '<script async defer src="https://us.gimp.zeronaught.com/__imp_apg__/js/volt-f5_apac_sp_yhsgmcye-3a06b9c8.js" id="_imp_apg_dip_" _imp_apg_cid_="volt-f5_apac_sp_yhsgmcye-3a06b9c8" _imp_apg_api_domain_="https://us.gimp.zeronaught.com"  ></script></head>';
-
-
         # proxy to upstream applications
         proxy_pass http://127.0.0.1:9080;
         proxy_set_header Host $http_host;
-        #proxy_set_header Host shop.foobz.com.au;
 
         # don't use http 1.0 so keepalive enabled by default
         proxy_http_version 1.1;
@@ -56,9 +38,22 @@ data:
     }
 
 
+    # API key validation
+    location = /_validate_api_key {
+       internal;
+
+       if ($http_api_key = "") {
+           return 401; # Unauthorized
+       }
+       if ($api_client_name = "") {
+           return 403; # Forbidden
+       }
+
+        return 204; # OK (no content)
+    }
+
     location /api {
        proxy_pass http://127.0.0.1:4010/api;
-       #proxy_set_header Host $http_host;
        proxy_http_version 1.1;
        proxy_set_header Connection "";
        proxy_send_timeout 86400s;
@@ -94,36 +89,10 @@ data:
        proxy_request_buffering off;
     }
 
-    #error_page  404              /404.html;
-
-    # redirect server error pages to the static page /50x.html
-    #
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
         root   /usr/share/nginx/html;
     }
 
-    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-    #
-    #location ~ \.php$ {
-    #    proxy_pass   http://127.0.0.1;
-    #}
-
-    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-    #
-    #location ~ \.php$ {
-    #    root           html;
-    #    fastcgi_pass   127.0.0.1:9000;
-    #    fastcgi_index  index.php;
-    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-    #    include        fastcgi_params;
-    #}
-
-    # deny access to .htaccess files, if Apache's document root
-    # concurs with nginx's one
-    #
-    #location ~ /\.ht {
-    #    deny  all;
-    #}
 
     }

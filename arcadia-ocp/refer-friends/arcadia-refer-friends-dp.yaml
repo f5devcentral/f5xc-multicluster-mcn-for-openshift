@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: refer-friends
-  annotations:
-    ves.io/sites: ves-io-system/hk2-hkg
   labels:
     app: refer-friends
     version: v1
@@ -20,7 +18,7 @@ spec:
         version: v1
     spec:
       containers:
-        - image: reg.edgecnf.com/fintech/arcadia-refer-friends:v2.0
+        - image: reg.edgecnf.com/fintech/arcadia-refer-friends:v2.0-ocp
           imagePullPolicy: IfNotPresent
           name: refer-friends
           env:
@@ -31,7 +29,7 @@ spec:
             - containerPort: 9080
               protocol: TCP
         - name: nginx-sc
-          image: reg.edgecnf.com/apps/nginx-unpriv:v1.1
+          image: reg.edgecnf.com/ngx/ngx-plus:v3.0-unpriv
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 9090
@@ -40,7 +38,7 @@ spec:
             mountPath: /etc/nginx/conf.d/default.conf
             subPath: default.conf
         - name: apigw-refer-friends
-          image: reg.edgecnf.com/apps/arcadia-apigw:v2.2
+          image: reg.edgecnf.com/apps/arcadia-apigw:v2.3
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 4010

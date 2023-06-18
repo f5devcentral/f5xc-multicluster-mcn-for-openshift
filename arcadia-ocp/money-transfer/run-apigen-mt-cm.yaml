@@ -2,9 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: run-apigen-mt.sh
-  annotations:
-    ves.io/sites: ves-io-system/hk2-hkg
 data:
   run-apigw-loadgen.sh: |
     #!/bin/sh
-    while true; do /usr/local/bin/newman run /tmp/east-west-mt-to-be-postman.json -n 30 --delay-request 500 --silent; sleep 600; done
+    while true; do /usr/local/bin/newman run /tmp/east-west-mt-to-be-postman.json -n 30 --delay-request 500 ; sleep 600; done
