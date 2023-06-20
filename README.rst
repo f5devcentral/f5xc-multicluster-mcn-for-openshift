@@ -1116,10 +1116,11 @@ NGINX Web Server will be use to simulate application resiliency and failover fro
 **4.4 Terraform**
 -----------------
 
-.. image:: https://img.youtube.com/vi/https://youtu.be/irl0a2SdEpA/maxresdefault.jpg
-    :alt: IMAGE ALT TEXT HERE
-    :target: https://www.youtube.com/watch?v=https://youtu.be/irl0a2SdEpA
+.. image:: https://img.youtube.com/vi/irl0a2SdEpA/maxresdefault.jpg
+    :alt: Multi-Cluster, MCN OCP
+    :target: https://youtu.be/irl0a2SdEpA
 
+    
 
 
 
