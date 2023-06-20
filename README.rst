@@ -1116,11 +1116,13 @@ NGINX Web Server will be use to simulate application resiliency and failover fro
 **4.4 Terraform**
 -----------------
 
+Video to demonstrate how you can runs the terraform code to orchstrate creation of multiple configuration objects for arcadia financial (origin pool, advertise policy, WAF policy, API Security definition and etc) 
+
 .. image:: https://img.youtube.com/vi/irl0a2SdEpA/maxresdefault.jpg
     :alt: Multi-Cluster, MCN OCP
     :target: https://youtu.be/irl0a2SdEpA
 
-    
+
 
 
 
