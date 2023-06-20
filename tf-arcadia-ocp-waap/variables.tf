@@ -1,6 +1,6 @@
 variable "api_url" {
     type = string
-    default = "https://f5-apac-sp.console.ves.volterra.io/api"
+    default = "https://<your-tenant-id>.console.ves.volterra.io/api"
 
 }
 
