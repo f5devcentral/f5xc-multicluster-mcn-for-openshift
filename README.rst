@@ -1116,5 +1116,10 @@ NGINX Web Server will be use to simulate application resiliency and failover fro
 **4.4 Terraform**
 -----------------
 
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://youtu.be/irl0a2SdEpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 
 
